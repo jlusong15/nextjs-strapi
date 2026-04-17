@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "taskName": {
+      "type": "string",
+      "required": true
+    },
+    "schedule": {
+      "type": "datetime"
+    },
+    "group": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "longDescription": {
+      "type": "text"
+    },
+    "category": {
+      "type": "string"
+    },
+    "taskStatus": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    }
+  }
+}
