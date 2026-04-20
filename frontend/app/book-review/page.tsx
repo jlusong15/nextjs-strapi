@@ -8,7 +8,7 @@ export default async function BookReview() {
 	return (
 		<div className="max-w-4xl w-full">
 			<SubPageLayout title="Book Reviews">
-				<p>Reviews are fetched from Strapi.</p>
+				<p>Reviews are retrieved from Strapi through a Next.js API proxy.</p>
 				{bookReviews?.map((review, i) => (
 					<div key={i} className="flex flex-col py-5 border-b border-gray-200 my-2.5 gap-3">
 						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
