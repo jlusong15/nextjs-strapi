@@ -19,7 +19,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const review = await fetchSingleBookReview(documentId)
 
 	return (
-		<div className="max-w-4xl w-full">
+		<div className="w-full">
 			<SubPageLayout title={review.title}>
 				<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
 				{

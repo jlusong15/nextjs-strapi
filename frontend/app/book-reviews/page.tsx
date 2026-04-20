@@ -7,7 +7,7 @@ export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
 
 	return (
-		<div className="max-w-4xl w-full">
+		<div className="max-w-2xl w-full">
 			<SubPageLayout title="Book Reviews">
 				<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
 				{bookReviews?.map((review, i) => (
