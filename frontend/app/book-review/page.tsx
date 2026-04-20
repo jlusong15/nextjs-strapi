@@ -12,7 +12,7 @@ export default async function BookReview() {
 				{bookReviews?.map((review, i) => (
 					<div key={i} className="flex flex-col py-5 border-b border-gray-200 my-2.5 gap-3">
 						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-							<h3 className="font-semibold">{review.title}</h3> <StarRating value={review.rating} readonly />
+							<h3>{review.title}</h3> <StarRating value={review.rating} readonly />
 						</div>
 						<div>
 							<p>{review.body ?? ""}</p>
