@@ -13,7 +13,6 @@ export async function fetcher<T>(
 	options: FetchOptions = {}
 ): Promise<T> {
 	const { revalidate, ...fetchOptions } = options;
-
 	const res = await fetch(`${BASE_URL}${endpoint}`, {
 		...fetchOptions,
 		cache: revalidate ? 'force-cache' : 'no-store',

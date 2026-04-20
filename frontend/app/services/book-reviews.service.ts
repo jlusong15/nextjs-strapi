@@ -1,8 +1,8 @@
 import api from "../lib/api";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "../lib/next-fetcher";
 import { mapDocs } from "../lib/utils";
 import { TagTypeId } from "../store/tagType";
-import { BookReviewModel, BookReviewResponseModel } from "../types/book-review.model";
+import { BookReviewModel, AllBookReviewResponseModel, SingleBookReviewResponseModel } from "../types/book-review.model";
 
 /**
  * RTK
@@ -11,7 +11,7 @@ export const bookReviewsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		getBookReviews: builder.query<BookReviewModel[], void>({
 			query: () => '/book-reviews',
-			transformResponse: (res: BookReviewResponseModel) => mapDocs<BookReviewModel[]>(res) as BookReviewModel[],
+			transformResponse: (res: AllBookReviewResponseModel) => mapDocs<BookReviewModel[]>(res) as BookReviewModel[],
 			providesTags: [TagTypeId.Book],
 		}),
 	}),
@@ -27,11 +27,12 @@ export const {
  * Fetch
  */
 export async function fetchBookReviews(): Promise<BookReviewModel[]> {
-	const res = await fetcher<BookReviewResponseModel>('/book-reviews');
+	const res = await fetcher<AllBookReviewResponseModel>('/book-reviews');
 
 	return mapDocs<BookReviewModel[]>(res) ?? [];
 }
 
-export async function fetchBookReview(id: string) {
-	return fetcher(`/book-reviews/${id}`);
+export async function fetchSingleBookReview(id: string): Promise<BookReviewModel> {
+	const res = await fetcher<SingleBookReviewResponseModel>(`/book-reviews/${id}`);
+	return res?.data ?? undefined;
 }

@@ -1,10 +1,14 @@
 import { strapiFetch } from "@/app/lib/strapi-fetcher"
 import { NextResponse } from "next/server"
 
-export async function GET() {
+export async function GET(
+	request: Request,
+	{ params }: { params: { documentId: string } }
+) {
+	const p = await params
 	try {
 		const data = await strapiFetch(
-			`/book-reviews?populate=*`
+			`/book-reviews/${p.documentId}?populate=*`
 		)
 
 		return NextResponse.json(data)

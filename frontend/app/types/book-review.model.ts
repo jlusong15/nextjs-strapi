@@ -1,5 +1,10 @@
-export interface BookReviewResponseModel {
+export interface AllBookReviewResponseModel {
   data: BookReviewModel[] | undefined
+  meta?: Meta
+}
+
+export interface SingleBookReviewResponseModel {
+  data: BookReviewModel
   meta?: Meta
 }
 
