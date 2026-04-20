@@ -4,6 +4,9 @@ import { mapDocs } from "../lib/utils";
 import { TagTypeId } from "../store/tagType";
 import { BookReviewModel, BookReviewResponseModel } from "../types/book-review.model";
 
+/**
+ * RTK
+ */
 export const bookReviewsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		getBookReviews: builder.query<BookReviewModel[], void>({
@@ -12,7 +15,7 @@ export const bookReviewsApi = api.injectEndpoints({
 			providesTags: [TagTypeId.Book],
 		}),
 	}),
-	overrideExisting: false,
+	overrideExisting: true,
 });
 
 export const {
@@ -20,12 +23,15 @@ export const {
 } = bookReviewsApi;
 
 
+/**
+ * Fetch
+ */
 export async function fetchBookReviews(): Promise<BookReviewModel[]> {
-	const res = await fetcher<BookReviewResponseModel>('book-reviews');
+	const res = await fetcher<BookReviewResponseModel>('/book-reviews');
 
 	return mapDocs<BookReviewModel[]>(res) ?? [];
 }
 
 export async function fetchBookReview(id: string) {
-	return fetcher(`posts/${id}`);
+	return fetcher(`/book-reviews/${id}`);
 }

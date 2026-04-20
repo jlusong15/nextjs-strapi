@@ -1,4 +1,8 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337/api/';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
+if (!BASE_URL) {
+	throw new Error('Missing NEXT_PUBLIC_API_URL');
+}
 
 type FetchOptions = RequestInit & {
 	revalidate?: number;
@@ -21,11 +25,12 @@ export async function fetcher<T>(
 	});
 
 	if (!res.ok) {
-		// optional: better error logging
 		const errorText = await res.text();
-		throw new Error(
-			`API Error ${res.status}: ${res.statusText} - ${errorText}`
+		console.error(
+			`API Error ${res.status}: ${res.statusText}`,
+			errorText
 		);
+		throw new Error(`Request failed with status ${res.status}`);
 	}
 
 	return res.json();
