@@ -1,10 +1,15 @@
 import SubPageLayout from "../components/layout/Subpages"
+import { fetchBookReviews } from "../services/book-reviews.service"
 
-export default function BookReview() {
+export default async function BookReview() {
+	const data = await fetchBookReviews()
+
 	return (
 		<>
 			<SubPageLayout title="Book Reviews">
-				<p>Coming soon</p>
+				{data?.map((x, i) => (
+					<div key={i}>{x?.title}</div>
+				))}
 			</SubPageLayout>
 		</>
 	)

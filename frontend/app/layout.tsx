@@ -1,7 +1,11 @@
 import type { Metadata } from "next"
-import { DM_Sans } from "next/font/google"
+import { DM_Sans, Geist } from "next/font/google"
 import MenuNav from "./components/layout/MenuNav"
 import "./globals.css"
+import Providers from "./providers"
+import { cn } from "@/lib/utils"
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const dmSans = DM_Sans({
 	subsets: ["latin"],
@@ -20,13 +24,16 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en" className={`${dmSans.variable}`}>
+		<html lang="en" className={cn(dmSans.variable, "font-sans", geist.variable)}>
 			<body className="font-sans antialiased">
 				<div className="flex">
 					<MenuNav />
 
 					<main className="flex-1 transition-all duration-300">
-						<div className="min-h-[calc(100svh-15px)]">{children}</div>
+						<div className="min-h-[calc(100svh-15px)]">
+							{" "}
+							<Providers>{children}</Providers>
+						</div>
 					</main>
 				</div>
 			</body>

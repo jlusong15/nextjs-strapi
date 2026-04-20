@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-export function mapDocs<T extends { docs?: T }>(data: T): T["docs"] | T {
-	return data?.docs ?? data;
+export function mapDocs<T>(res: { data?: T }): T | undefined {
+  return res.data;
 }
 
 export function cleanedObj<T>(obj: T) {

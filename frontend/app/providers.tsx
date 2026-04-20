@@ -1,13 +1,8 @@
-// "use client"
+"use client"
 
-// import { Provider } from "react-redux"
-// import { store } from "./store"
-// import { TooltipProvider } from "@/components/ui/tooltip"
+import { Provider } from "react-redux"
+import { store } from "./store"
 
-// export default function Providers({ children }: { children: React.ReactNode }) {
-// 	return (
-// 		<Provider store={store}>
-// 			<TooltipProvider>{children}</TooltipProvider>
-// 		</Provider>
-// 	)
-// }
+export default function Providers({ children }: { children: React.ReactNode }) {
+	return <Provider store={store}>{children}</Provider>
+}
