@@ -12,8 +12,8 @@ export default function Home() {
 			>
 				<div className="w-full max-w-xl text-center sm:text-right opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
 					<span className="text-xl sm:text-4xl md:text-6xl font-bold mb-4 text-primary">Hello World!</span>
-					<p className="text-sm sm:text-lg md:text-xl text-gray-500">
-						This is Jennifer Bautista's test app built on React Next.js
+					<p className="text-sm sm:text-lg md:text-lg text-gray-500">
+						This is Jennifer Bautista's test app built on React Next.js + Strapi
 					</p>
 					<a
 						href="#about-me"
