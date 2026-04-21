@@ -5,22 +5,24 @@ export default function Home() {
 		<>
 			<section
 				id="home"
-				className="h-[calc(100vh)] bg-cover bg-center flex items-center justify-end px-8"
+				className="h-[calc(100vh)] bg-cover bg-right flex items-center justify-end"
 				style={{
 					backgroundImage: "url('/images/home.jpg')",
 				}}
 			>
-				<div className="w-full max-w-xl text-center sm:text-right opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
-					<span className="text-xl sm:text-4xl md:text-6xl font-bold mb-4 text-primary">Hello World!</span>
-					<p className="text-sm sm:text-lg md:text-lg text-gray-500">
-						This is Jennifer Bautista's test app built on React Next.js + Strapi
-					</p>
-					<a
-						href="#about-me"
-						className="inline-block mt-6 px-6 py-3 bg-primary text-white rounded-md hover:bg-secondary-foreground transition cursor-pointer"
-					>
-						About Me
-					</a>
+				<div className="h-[calc(100vh)] w-full px-8 flex items-center justify-end bg-linear-to-l from-black/80 to-transparent">
+					<div className="w-full max-w-xl text-center sm:text-right opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+						<span className="text-xl sm:text-4xl md:text-6xl font-bold mb-4 text-white">Hello World!</span>
+						<p className="text-sm sm:text-lg md:text-lg text-gray-200">
+							This is Jennifer Bautista's test app built on React Next.js + Strapi
+						</p>
+						<a
+							href="#about-me"
+							className="cursor-pointer inline-block mt-6 px-6 py-3 bg-white text-primary rounded-md hover:text-white hover:bg-gray-500 transition"
+						>
+							About Me
+						</a>
+					</div>
 				</div>
 			</section>
 			<section
