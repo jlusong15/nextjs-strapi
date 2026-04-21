@@ -1,4 +1,4 @@
-const STRAPI_URL = process.env.STRAPI_URL
+const STRAPI_URL = process.env.STRAPI_URL || 'https://nextjs-strapi-rawh.onrender.com/api'
 
 export async function strapiFetch(path: string) {
 	if (!STRAPI_URL) {

@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://nextjs-strapi-sepia.vercel.app/api';
 
 if (!BASE_URL) {
 	throw new Error('Missing NEXT_PUBLIC_API_URL');
