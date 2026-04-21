@@ -1,4 +1,4 @@
-import { BookA, House, LayoutDashboard, LucideIcon, Mail, SquareCheckBig } from "lucide-react";
+import { BookA, House, LucideIcon } from "lucide-react";
 
 export interface NavModel {
 	name: string
@@ -8,5 +8,5 @@ export interface NavModel {
 
 export const NavLinks = [
 	{ name: 'Home', icon: House, route: '/' },
-	{ name: 'Book', icon: BookA, route: '/book-reviews' },
+	{ name: 'Book Reviews', icon: BookA, route: '/book-reviews' },
 ];
