@@ -18,6 +18,7 @@ A modern full-stack setup using:
 my-app/
 ├── frontend/ # Next.js app
 │ ├── app/
+│ ├── api/
 │ ├── store/
 │ │ ├── slices/
 │ │ ├── hooks.ts # Redux Hooks
