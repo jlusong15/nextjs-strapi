@@ -1,3 +1,5 @@
+Link to live demo: https://nextjs-strapi-sepia.vercel.app/
+
 # 🚀 Next.js + Strapi (SSR Hydration Setup)
 
 A modern full-stack setup using:
