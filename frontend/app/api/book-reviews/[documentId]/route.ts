@@ -1,21 +1,22 @@
+import { NextRequest, NextResponse } from "next/server"
 import { strapiFetch } from "@/app/lib/strapi-fetcher"
-import { NextResponse } from "next/server"
 
 export async function GET(
-	request: Request,
-	{ params }: { params: { documentId: string } }
+  request: NextRequest,
+  context: { params: Promise<{ documentId: string }> }
 ) {
-	const p = await params
-	try {
-		const data = await strapiFetch(
-			`/book-reviews/${p.documentId}?populate=*`
-		)
+  const { documentId } = await context.params
 
-		return NextResponse.json(data)
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Server error", error: String(error) },
-			{ status: 500 }
-		)
-	}
+  try {
+    const data = await strapiFetch(
+      `/book-reviews/${documentId}?populate=*`
+    )
+
+    return NextResponse.json(data)
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to fetch" },
+      { status: 500 }
+    )
+  }
 }
