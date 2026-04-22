@@ -480,6 +480,7 @@ export interface ApiBookReviewBookReview extends Struct.CollectionTypeSchema {
   attributes: {
     author: Schema.Attribute.String & Schema.Attribute.Required;
     body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
