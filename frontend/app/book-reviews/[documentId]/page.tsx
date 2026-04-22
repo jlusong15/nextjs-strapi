@@ -3,6 +3,7 @@ import StrapiImage from "@/app/components/shared/StrapiImage"
 import StarRating from "@/app/components/shared/Rating"
 import { fetchSingleBookReview } from "@/app/services/book-reviews.service"
 import Link from "next/link"
+import StrapiRichTextBlocks from "@/app/components/shared/StrapiRichTextBlock"
 
 type ViewBookReviewProps = {
 	params: Promise<{
@@ -32,7 +33,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								<StrapiImage image={review.image} size="original" className="max-w-50" />
 							</div>
 							<div>
-								<p>{review.body ?? ""}</p>
+								<StrapiRichTextBlocks content={review.content}/>
 							</div>
 						</div>
 						<div className="pt-2 text-right">

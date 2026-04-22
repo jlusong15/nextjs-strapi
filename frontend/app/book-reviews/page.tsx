@@ -2,6 +2,7 @@ import Link from "next/link"
 import SubPageLayout from "../components/layout/Subpages"
 import StarRating from "../components/shared/Rating"
 import { fetchBookReviews } from "../services/book-reviews.service"
+import StrapiRichTextBlocks from "../components/shared/StrapiRichTextBlock"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
@@ -15,7 +16,11 @@ export default async function BookReview() {
 						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
 							<h3>{review.title}</h3> <StarRating value={review.rating} readonly />
 						</div>
-						<div className="line-clamp-4">{review.body ?? ""}</div>
+						<div className="line-clamp-4">
+							<p>
+								<StrapiRichTextBlocks content={review.content} isPlain={true} />
+							</p>
+						</div>
 						<div className="text-right">
 							<Link
 								href={"/book-reviews/" + review?.documentId}
