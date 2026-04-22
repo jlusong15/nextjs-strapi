@@ -1,3 +1,5 @@
+import { StrapiImageData } from "./strapi-image.model"
+
 export interface AllBookReviewResponseModel {
   data: BookReviewModel[] | undefined
   meta?: Meta
@@ -17,6 +19,8 @@ export interface BookReviewModel {
   createdAt: string
   updatedAt: string
   publishedAt: string
+	image: StrapiImageData
+	author: string
 }
 
 export interface Meta {

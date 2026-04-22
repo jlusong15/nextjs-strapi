@@ -1,4 +1,5 @@
 import SubPageLayout from "@/app/components/layout/Subpages"
+import StrapiImage from "@/app/components/shared/StrapiImage"
 import StarRating from "@/app/components/shared/Rating"
 import { fetchSingleBookReview } from "@/app/services/book-reviews.service"
 import Link from "next/link"
@@ -16,18 +17,23 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const p = await params
 	const documentId = p?.documentId
 	const review = await fetchSingleBookReview(documentId)
-
+	console.log("review", review)
 	return (
 		<div className="w-full">
 			<SubPageLayout title={review.title}>
 				<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
 				{
-					<div className="py-5 my-2.5 gap-3">
-						<div className="mb-2">
+					<div className="py-5 my-2.5 flex flex-col gap-5">
+						<div className="m-auto">
 							<StarRating value={review.rating} readonly />
 						</div>
-						<div>
-							<p>{review.body ?? ""}</p>
+						<div className="flex flex-row gap-2">
+							<div className="mr-2 mb-2">
+								<StrapiImage image={review.image} size="original" className="max-w-50" />
+							</div>
+							<div>
+								<p>{review.body ?? ""}</p>
+							</div>
 						</div>
 						<div className="pt-2 text-right">
 							<Link

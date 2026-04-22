@@ -28,7 +28,6 @@ export const {
  */
 export async function fetchBookReviews(): Promise<BookReviewModel[]> {
 	const res = await fetcher<AllBookReviewResponseModel>('/book-reviews');
-	console.log(res)
 	return mapDocs<BookReviewModel[]>(res) ?? [];
 }
 
