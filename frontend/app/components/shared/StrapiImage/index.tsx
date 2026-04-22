@@ -37,8 +37,8 @@ export default function StrapiImage({
   ...props
 }: Props) {
   const img = getImage(image, size);
-	console.log(img)
-	console.log(img?.url)
+	console.log('img', img)
+	console.log('img?.url', img?.url)
   if (!img) {
     return (
       <Image
