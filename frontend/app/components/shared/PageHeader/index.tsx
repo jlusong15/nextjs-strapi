@@ -3,5 +3,5 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title }: PageHeaderProps) {
-	return <h1 className="mb-3 font-semibold">{title}</h1>
+	return <h1 className="mb-3 font-semibold text-primary">{title}</h1>
 }

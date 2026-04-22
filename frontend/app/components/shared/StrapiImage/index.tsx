@@ -52,7 +52,7 @@ export default function StrapiImage({
   return (
     <Image
       src={img.url}
-      alt={image?.alternativeText || image?.name || "image"}
+      alt={img.url || image?.alternativeText || image?.name || "image"}
       width={img.width}
       height={img.height}
       {...props}
