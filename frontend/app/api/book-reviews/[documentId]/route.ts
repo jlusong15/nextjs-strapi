@@ -11,7 +11,7 @@ export async function GET(
 
 	try {
 		const data = await strapiFetch(link)
-		console.log("data", data)
+		console.log("data", JSON.stringify(data))
 		return NextResponse.json(data)
 	} catch (error) {
 		return NextResponse.json(

@@ -33,5 +33,6 @@ export async function fetchBookReviews(): Promise<BookReviewModel[]> {
 
 export async function fetchSingleBookReview(id: string): Promise<BookReviewModel> {
 	const res = await fetcher<SingleBookReviewResponseModel>(`/book-reviews/${id}`);
+	console.log("fetchdata", res?.data)
 	return res?.data ?? undefined;
 }
