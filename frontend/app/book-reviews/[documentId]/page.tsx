@@ -46,8 +46,6 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								← Back to all reviews
 							</Link>
 						</div>
-
-						<div className="w-[300px] text-ellipsis d-block">{JSON.stringify(review.image)}</div>
 					</div>
 				}
 			</SubPageLayout>
