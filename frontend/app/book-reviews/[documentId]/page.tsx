@@ -22,7 +22,9 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	return (
 		<div className="w-full">
 			<SubPageLayout title={review.title}>
-				<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
+				<div className="border-b border-b-gray-100 pb-2 mb-5">
+					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
+				</div>
 				{
 					<div className="py-5 my-2.5 flex flex-col gap-5">
 						<div className="m-auto">
@@ -33,7 +35,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								<StrapiImage image={review.image} size="original" className="max-w-50" />
 							</div>
 							<div>
-								<StrapiRichTextBlocks content={review.content}/>
+								<StrapiRichTextBlocks content={review.content} />
 							</div>
 						</div>
 						<div className="pt-2 text-right">
