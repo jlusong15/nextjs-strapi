@@ -7,7 +7,7 @@ import StrapiImage from "../components/shared/StrapiImage"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
-
+	console.log('bookReviews', bookReviews)
 	return (
 		<div className="max-w-4xl w-full">
 			<SubPageLayout title="Book Reviews">
