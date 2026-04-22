@@ -36,6 +36,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 							</div>
 							<div>
 								<StrapiRichTextBlocks content={review.content} />
+								{JSON.stringify(review.image)}
 							</div>
 						</div>
 						<div className="pt-2 text-center sm:text-right">
