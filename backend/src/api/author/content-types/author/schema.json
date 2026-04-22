@@ -9,11 +9,7 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": false
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "fullName": {
       "type": "string",
@@ -49,6 +45,9 @@
       "type": "string"
     },
     "genre": {
+      "type": "string"
+    },
+    "extImgUrl": {
       "type": "string"
     }
   }

@@ -7,11 +7,9 @@ export async function GET(
 ) {
 	const { documentId } = await context.params
 	const link = `/book-reviews/${documentId}?populate=*`;
-	console.log("link", link)
 
 	try {
 		const data = await strapiFetch(link)
-		console.log("data", JSON.stringify(data))
 		return NextResponse.json(data)
 	} catch (error) {
 		return NextResponse.json(

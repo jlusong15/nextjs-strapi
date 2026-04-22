@@ -10,7 +10,6 @@ type Props = {
 } & Omit<ImageProps, "src" | "alt">;
 
 const BASE_URL = process.env.STRAPI_URL?.replace('/api', '') || "";
-console.log("BASE_URL:", BASE_URL);
 
 function getImage(image?: StrapiImageData | null, size: Size = "original") {
   if (!image) return null;
@@ -37,8 +36,7 @@ export default function StrapiImage({
   ...props
 }: Props) {
   const img = getImage(image, size);
-	console.log('img', JSON.stringify(img))
-	console.log('img?.url', img?.url)
+
   if (!img) {
     return (
       <Image

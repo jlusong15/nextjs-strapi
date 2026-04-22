@@ -477,11 +477,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: false;
-    };
-  };
   attributes: {
     alias: Schema.Attribute.String;
     birthDate: Schema.Attribute.Date;
@@ -491,6 +486,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    extImgUrl: Schema.Attribute.String;
     famouseQuote: Schema.Attribute.Text;
     fullName: Schema.Attribute.String & Schema.Attribute.Required;
     genre: Schema.Attribute.String;
@@ -525,6 +521,7 @@ export interface ApiBookReviewBookReview extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    extImgUrl: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

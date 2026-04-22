@@ -41,6 +41,9 @@
     "content": {
       "type": "blocks",
       "required": true
+    },
+    "extImgUrl": {
+      "type": "string"
     }
   }
 }
