@@ -18,7 +18,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const p = await params
 	const documentId = p?.documentId
 	const review = await fetchSingleBookReview(documentId)
-	console.log("review", review)
+
 	return (
 		<div className="w-full">
 			<SubPageLayout title={review.title}>
@@ -28,17 +28,17 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 				{
 					<div className="py-5 my-2.5 flex flex-col gap-5">
 						<div className="m-auto">
-							<StarRating value={review.rating} readonly />
+							<StarRating value={review.rating} size={40} readonly />
 						</div>
-						<div className="flex flex-row gap-2">
+						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
 							<div className="mr-2 mb-2">
-								<StrapiImage image={review.image} size="original" className="max-w-50" />
+								<StrapiImage image={review.image} size="original" className="max-w-50 m-auto" />
 							</div>
 							<div>
 								<StrapiRichTextBlocks content={review.content} />
 							</div>
 						</div>
-						<div className="pt-2 text-right">
+						<div className="pt-2 text-center sm:text-right">
 							<Link
 								href="/book-reviews"
 								className="inline-flex items-center text-sm p-2 rounded bg-gray-200 hover:bg-gray-300 transition"

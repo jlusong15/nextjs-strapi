@@ -12,6 +12,10 @@ export default function StrapiRichTextBlocks({
 	content: StrapiRichTextBlock[]
 	isPlain?: boolean
 }) {
+	if (!content) {
+		return <></>
+	}
+
 	if (isPlain) {
 		return <>{extractPlainText(content)}</>
 	}

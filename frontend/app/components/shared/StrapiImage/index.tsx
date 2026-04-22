@@ -1,4 +1,3 @@
-// components/StrapiImage.tsx
 import { StrapiImageData } from "@/app/types/strapi-image.model";
 import Image, { ImageProps } from "next/image";
 
@@ -33,7 +32,7 @@ function getImage(image?: StrapiImageData | null, size: Size = "original") {
 export default function StrapiImage({
   image,
   size = "original",
-  fallback = "/fallback.png",
+  fallback = "/images/fallback-book.png",
   ...props
 }: Props) {
   const img = getImage(image, size);
