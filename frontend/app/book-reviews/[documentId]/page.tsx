@@ -30,13 +30,12 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 						<div className="m-auto">
 							<StarRating value={review.rating} size={40} readonly />
 						</div>
-						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-							<div className="mr-2 mb-2">
+						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+							<div className="m-2 mt-4">
 								<StrapiImage image={review.image} size="original" className="max-w-50 m-auto" />
 							</div>
 							<div>
 								<StrapiRichTextBlocks content={review.content} />
-								{JSON.stringify(review.image)}
 							</div>
 						</div>
 						<div className="pt-2 text-center sm:text-right">
@@ -47,6 +46,8 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								← Back to all reviews
 							</Link>
 						</div>
+
+						<div className="w-[300px] text-ellipsis d-block">{JSON.stringify(review.image)}</div>
 					</div>
 				}
 			</SubPageLayout>
