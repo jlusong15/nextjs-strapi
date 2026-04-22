@@ -6,12 +6,11 @@ export async function GET(
 	context: { params: Promise<{ documentId: string }> }
 ) {
 	const { documentId } = await context.params
+	const link = `/book-reviews/${documentId}?populate=*`;
+	console.log("link",)
 
 	try {
-		const data = await strapiFetch(
-			`/book-reviews/${documentId}?populate=*`
-		)
-
+		const data = await strapiFetch(link)
 		return NextResponse.json(data)
 	} catch (error) {
 		return NextResponse.json(
