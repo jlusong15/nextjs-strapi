@@ -4,7 +4,7 @@ export async function strapiFetch(path: string) {
 	if (!STRAPI_URL) {
 		throw new Error("STRAPI_URL is not defined")
 	}
-	console.log('STRAPI_URL', STRAPI_URL)
+
 	const res = await fetch(`${STRAPI_URL}${path}`, {
 		method: "GET",
 		headers: {
