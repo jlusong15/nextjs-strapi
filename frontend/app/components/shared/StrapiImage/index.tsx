@@ -35,8 +35,9 @@ export default function StrapiImage({
   fallback = "/images/fallback-book.png",
   ...props
 }: Props) {
+	console.log('image.url', image?.url)
   const img = getImage(image, size);
-
+	console.log('img?.url', img?.url)
   if (!img) {
     return (
       <Image
