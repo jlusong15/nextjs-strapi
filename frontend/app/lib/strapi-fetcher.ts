@@ -16,8 +16,8 @@ export async function strapiFetch(path: string) {
 	console.log("STATUS:", res.status);
 
 	if (!res.ok) {
-		throw new Error(`Strapi fetch failed: ${res.status}`)
 		console.log("ERR:", res.ok);
+		throw new Error(`Strapi fetch failed: ${res.status}`)
 	}
 	console.log("OK:", res.ok);
 
