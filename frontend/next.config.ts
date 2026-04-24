@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	images: {
-    domains: ["localhost", "nextjs-strapi-rawh.onrender.com"],
+    domains: ["localhost", "nextjs-strapi-production.up.railway.app"],
   },
 };
 
