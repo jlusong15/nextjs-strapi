@@ -7,10 +7,7 @@ const config: Core.Config.Middlewares = [
 	{
 		name: "strapi::cors",
 		config: {
-			origin: [
-				"http://localhost:3000",
-				"https://nextjs-strapi-sepia.vercel.app",
-			],
+			origin: ['*']
 		},
 	},
 	'strapi::poweredBy',
