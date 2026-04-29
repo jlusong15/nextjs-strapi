@@ -48,12 +48,9 @@ my-app/
 - Shadcn UI
 
 ### Backend
-- Strapi v4+
+- Strapi v4+ (on Railway; Migrated from Render)
+- PostgreSQL (on Supabase)
 - REST API
-
----
-
-# 🔌 Backend Setup (Strapi)
 
 ## Run Strapi Project
 
