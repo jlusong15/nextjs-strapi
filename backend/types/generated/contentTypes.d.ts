@@ -479,13 +479,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     alias: Schema.Attribute.String;
-    amount: Schema.Attribute.Decimal &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
     birthDate: Schema.Attribute.Date;
     birthPlace: Schema.Attribute.String;
     citizenship: Schema.Attribute.String;
@@ -537,6 +530,13 @@ export interface ApiBookReviewBookReview extends Struct.CollectionTypeSchema {
       'api::book-review.book-review'
     > &
       Schema.Attribute.Private;
+    price: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Integer &
       Schema.Attribute.Required &

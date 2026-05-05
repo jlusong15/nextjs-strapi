@@ -44,6 +44,10 @@
     },
     "extImgUrl": {
       "type": "string"
+    },
+    "price": {
+      "type": "decimal",
+      "min": 0
     }
   }
 }
