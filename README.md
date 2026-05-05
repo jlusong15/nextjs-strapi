@@ -9,6 +9,7 @@ A modern full-stack setup using:
 - ⚛️ Server-side rendering (SSR)
 - 🎯 Client-side hydration (RTK Query cache)
 - 🎨 TailwindCSS
+- 💰 Stripe (Payment Gateway)
 - 🧩 Zustand-ready structure (optional UI state)
 
 ---
