@@ -28,35 +28,40 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 				</div>
 				{
 					<div className="py-5 my-2.5 flex flex-col gap-5">
-						<div className="m-auto">
-							<StarRating value={review.rating} size={40} readonly />
-						</div>
-						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-							<div className="m-2 mt-4">
-								<StrapiImage image={review.image} size="original" className="max-w-50 m-auto" />
-							</div>
+						<div className="flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-2">
 							<div>
+								<StarRating value={review.rating} size={40} readonly />
+							</div>
+							<div className="flex gap-2">
+								<Link
+									href="/book-reviews"
+									className="inline-flex items-center p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
+								>
+									← Back to all reviews
+								</Link>
+								{review?.price && (
+									<CheckoutButton
+										checkoutItem={{
+											name: review?.title || "Book",
+											amount: review?.price,
+										}}
+										className="inline-flex items-center py-5 no-underline! rounded bg-primary transition"
+									>
+										Buy Book
+									</CheckoutButton>
+								)}
+							</div>
+						</div>
+						<div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+							<StrapiImage
+								image={review.image}
+								size="original"
+								className="w-full max-w-40 sm:max-w-50 h-auto object-contain mt-4"
+							/>
+
+							<div className="flex-1">
 								<StrapiRichTextBlocks content={review.content} />
 							</div>
-						</div>
-						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-center sm:justify-end">
-							<Link
-								href="/book-reviews"
-								className="inline-flex items-center p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
-							>
-								← Back to all reviews
-							</Link>
-							{review?.price && (
-								<CheckoutButton
-									checkoutItem={{
-										name: review?.title || "Book",
-										amount: review?.price,
-									}}
-									className="inline-flex items-center py-4.5 no-underline! rounded bg-primary transition"
-								>
-									Buy Book
-								</CheckoutButton>
-							)}
 						</div>
 					</div>
 				}

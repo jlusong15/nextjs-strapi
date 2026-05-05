@@ -17,8 +17,11 @@ export default async function BookReview() {
 				</div>
 				{bookReviews?.map((review, i) => (
 					<div key={i} className="flex flex-col py-5 border-b border-gray-200 my-2.5 gap-3">
-						<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-							<h3 className="text-lg sm:text-2xl">{review.title}</h3> <StarRating value={review.rating} readonly />
+						<div className="flex flex-col justify-between sm:flex-row sm:justify-between sm:items-center gap-2">
+							<h3 className="flex justify-center sm:justify-start text-lg sm:text-2xl">{review.title}</h3>{" "}
+							<span className="flex justify-center sm:justify-end">
+								<StarRating value={review.rating} readonly />
+							</span>
 						</div>
 						<div className="flex flex-row gap-2 items-start">
 							<div className="mr-2 mb-2">
