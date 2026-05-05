@@ -13,16 +13,10 @@ export async function strapiFetch(path: string) {
 		cache: "no-store",
 	})
 
-	console.log("STATUS:", res.status);
-
 	if (!res.ok) {
-		console.log("ERR:", res.ok);
 		throw new Error(`Strapi fetch failed: ${res.status}`)
 	}
-	console.log("OK:", res.ok);
 
-	const data = await res.clone().json();
-	console.log("DATA:", data);
-
+	// const data = await res.clone().json();
 	return res.json()
 }

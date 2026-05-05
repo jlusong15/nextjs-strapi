@@ -34,7 +34,7 @@ export default async function BookReview() {
 								href={"/book-reviews/" + review?.documentId}
 								className="inline-flex items-center uppercase text-xs py-1 px-2 rounded bg-gray-200 hover:bg-gray-300 transition"
 							>
-								Read
+								Read more
 							</Link>
 							{review?.price && (
 								<CheckoutButton
@@ -44,7 +44,7 @@ export default async function BookReview() {
 									}}
 									className="inline-flex items-center uppercase text-xs py-1 px-2 no-underline! rounded bg-primary transition"
 								>
-									Buy
+									Buy now
 								</CheckoutButton>
 							)}
 						</div>

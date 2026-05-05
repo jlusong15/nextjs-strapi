@@ -22,21 +22,17 @@ export async function fetcher<T>(
 			...(fetchOptions.headers || {}),
 		},
 	});
-	console.log("STATUS:", res.status);
 
 	if (!res.ok) {
-		console.log("ERR:", res.ok);
 		const errorText = await res.text();
 		console.error(
 			`API Error ${res.status}: ${res.statusText}`,
 			errorText
 		);
-	console.log("OK:", res.ok);
 		throw new Error(`Request failed with status ${res.status}`);
 	}
 
 	const data = await res.clone().json();
-	console.log("DATA2:", data);
 	return res.json();
 }
 
