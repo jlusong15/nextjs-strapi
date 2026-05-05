@@ -39,7 +39,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								<StrapiRichTextBlocks content={review.content} />
 							</div>
 						</div>
-						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-end">
+						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-center sm:justify-end">
 							<Link
 								href="/book-reviews"
 								className="inline-flex items-center p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
