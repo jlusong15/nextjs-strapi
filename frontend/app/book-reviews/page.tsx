@@ -4,6 +4,7 @@ import StarRating from "../components/shared/Rating"
 import { fetchBookReviews } from "../services/book-reviews.service"
 import StrapiRichTextBlocks from "../components/shared/StrapiRichTextBlock"
 import StrapiImage from "../components/shared/StrapiImage"
+import CheckoutButton from "../components/shared/CheckoutButton"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
@@ -28,13 +29,24 @@ export default async function BookReview() {
 							</div>
 						</div>
 
-						<div className="text-right">
+						<div className="sm:text-right flex flex-row gap-1 justify-center sm:justify-end">
 							<Link
 								href={"/book-reviews/" + review?.documentId}
-								className="inline-flex items-center text-xs p-1 rounded bg-gray-200 hover:bg-gray-300 transition"
+								className="inline-flex items-center uppercase text-xs py-1 px-2 rounded bg-gray-200 hover:bg-gray-300 transition"
 							>
-								Read full review
+								Read
 							</Link>
+							{review?.price && (
+								<CheckoutButton
+									checkoutItem={{
+										name: review?.title || "Book",
+										amount: review?.price,
+									}}
+									className="inline-flex items-center uppercase text-xs py-1 px-2 no-underline! rounded bg-primary transition"
+								>
+									Buy
+								</CheckoutButton>
+							)}
 						</div>
 					</div>
 				))}
