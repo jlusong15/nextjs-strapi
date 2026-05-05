@@ -21,6 +21,7 @@ export interface BookReviewModel {
 	publishedAt: string
 	image: StrapiImageData
 	author: string
+	price: number | undefined
 	content: StrapiRichTextBlock[]
 }
 

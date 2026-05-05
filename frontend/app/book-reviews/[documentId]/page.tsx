@@ -19,10 +19,6 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const p = await params
 	const documentId = p?.documentId
 	const review = await fetchSingleBookReview(documentId)
-	const checkoutItem = {
-		name: review.title,
-		amount: 1000,
-	}
 
 	return (
 		<div className="w-full">
@@ -50,12 +46,17 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 							>
 								← Back to all reviews
 							</Link>
-							<CheckoutButton
-								checkoutItem={checkoutItem}
-								className="inline-flex items-center py-4.5 no-underline! rounded bg-primary transition"
-							>
-								Buy Book
-							</CheckoutButton>
+							{review?.price && (
+								<CheckoutButton
+									checkoutItem={{
+										name: review?.title || "Book",
+										amount: review?.price,
+									}}
+									className="inline-flex items-center py-4.5 no-underline! rounded bg-primary transition"
+								>
+									Buy Book
+								</CheckoutButton>
+							)}
 						</div>
 					</div>
 				}
