@@ -46,13 +46,13 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-end">
 							<Link
 								href="/book-reviews"
-								className="inline-flex items-center text-sm p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
+								className="inline-flex items-center p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
 							>
 								← Back to all reviews
 							</Link>
 							<CheckoutButton
 								checkoutItem={checkoutItem}
-								className="inline-flex items-center text-sm py-4.5 no-underline! rounded bg-primary transition"
+								className="inline-flex items-center py-4.5 no-underline! rounded bg-primary transition"
 							>
 								Buy Book
 							</CheckoutButton>
