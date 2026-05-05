@@ -48,6 +48,12 @@ my-app/
 - RTK Query
 - Shadcn UI
 
+## Run React Project
+
+```bash
+cd frontend
+npm run dev
+
 ### Backend
 - Strapi v4+ (on Railway; Migrated from Render)
 - PostgreSQL (on Supabase)
@@ -57,4 +63,4 @@ my-app/
 
 ```bash
 cd backend
-npm run develop
+npm run dev
