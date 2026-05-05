@@ -13,6 +13,7 @@ type Props = {
 
 export default function CheckoutButton({
 	checkoutItem,
+	children,
 	...props
 }: Props &
 	React.ComponentProps<"button"> &
@@ -33,7 +34,7 @@ export default function CheckoutButton({
 
 	return (
 		<Button onClick={handleBookCheckout} {...props}>
-			Buy Book
+			{children}
 		</Button>
 	)
 }

@@ -3,7 +3,7 @@ import CheckoutButton from "@/app/components/shared/CheckoutButton"
 import StarRating from "@/app/components/shared/Rating"
 import StrapiImage from "@/app/components/shared/StrapiImage"
 import StrapiRichTextBlocks from "@/app/components/shared/StrapiRichTextBlock"
-import { checkoutBook, fetchSingleBookReview } from "@/app/services/book-reviews.service"
+import { fetchSingleBookReview } from "@/app/services/book-reviews.service"
 import Link from "next/link"
 
 type ViewBookReviewProps = {
@@ -44,16 +44,18 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 							</div>
 						</div>
 						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-end">
-							<CheckoutButton
-								checkoutItem={checkoutItem}
-								className="inline-flex items-center text-sm py-4.5 no-underline! rounded bg-primary transition"
-							/>
 							<Link
 								href="/book-reviews"
 								className="inline-flex items-center text-sm p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
 							>
 								← Back to all reviews
 							</Link>
+							<CheckoutButton
+								checkoutItem={checkoutItem}
+								className="inline-flex items-center text-sm py-4.5 no-underline! rounded bg-primary transition"
+							>
+								Buy Book
+							</CheckoutButton>
 						</div>
 					</div>
 				}
