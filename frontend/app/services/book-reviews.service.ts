@@ -1,8 +1,9 @@
 import api from "../lib/api";
-import { fetcher } from "../lib/next-fetcher";
+import { fetcher, postFetcher } from "../lib/next-fetcher";
 import { mapDocs } from "../lib/utils";
 import { TagTypeId } from "../store/tagType";
 import { BookReviewModel, AllBookReviewResponseModel, SingleBookReviewResponseModel } from "../types/book-review.model";
+import { CheckoutModel } from "../types/checkout.model";
 
 /**
  * RTK
@@ -34,4 +35,8 @@ export async function fetchBookReviews(): Promise<BookReviewModel[]> {
 export async function fetchSingleBookReview(id: string): Promise<BookReviewModel> {
 	const res = await fetcher<SingleBookReviewResponseModel>(`/book-reviews/${id}`);
 	return res?.data ?? undefined;
+}
+
+export async function checkoutBook(body: CheckoutModel): Promise<any> {
+	return await postFetcher<{ url: string }>('/checkout', body)
 }

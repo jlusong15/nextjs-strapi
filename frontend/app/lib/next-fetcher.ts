@@ -39,3 +39,16 @@ export async function fetcher<T>(
 	console.log("DATA2:", data);
 	return res.json();
 }
+
+
+export async function postFetcher<T>(
+	endpoint: string,
+	body: any,
+	options: FetchOptions = {}
+): Promise<T> {
+	return fetcher<T>(endpoint, {
+		...options,
+		method: "POST",
+		body: JSON.stringify(body),
+	});
+}

@@ -1,9 +1,10 @@
 import SubPageLayout from "@/app/components/layout/Subpages"
-import StrapiImage from "@/app/components/shared/StrapiImage"
+import CheckoutButton from "@/app/components/shared/CheckoutButton"
 import StarRating from "@/app/components/shared/Rating"
-import { fetchSingleBookReview } from "@/app/services/book-reviews.service"
-import Link from "next/link"
+import StrapiImage from "@/app/components/shared/StrapiImage"
 import StrapiRichTextBlocks from "@/app/components/shared/StrapiRichTextBlock"
+import { checkoutBook, fetchSingleBookReview } from "@/app/services/book-reviews.service"
+import Link from "next/link"
 
 type ViewBookReviewProps = {
 	params: Promise<{
@@ -18,6 +19,10 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const p = await params
 	const documentId = p?.documentId
 	const review = await fetchSingleBookReview(documentId)
+	const checkoutItem = {
+		name: review.title,
+		amount: 1000,
+	}
 
 	return (
 		<div className="w-full">
@@ -38,7 +43,11 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 								<StrapiRichTextBlocks content={review.content} />
 							</div>
 						</div>
-						<div className="pt-2 text-center sm:text-right">
+						<div className="pt-2 sm:text-right flex flex-row gap-2 justify-end">
+							<CheckoutButton
+								checkoutItem={checkoutItem}
+								className="inline-flex items-center text-sm py-4.5 no-underline! rounded bg-primary transition"
+							/>
 							<Link
 								href="/book-reviews"
 								className="inline-flex items-center text-sm p-2 rounded bg-gray-200 hover:bg-gray-300 transition"
