@@ -479,6 +479,13 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     alias: Schema.Attribute.String;
+    amount: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     birthDate: Schema.Attribute.Date;
     birthPlace: Schema.Attribute.String;
     citizenship: Schema.Attribute.String;
