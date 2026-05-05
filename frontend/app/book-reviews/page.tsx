@@ -24,7 +24,7 @@ export default async function BookReview() {
 							<div className="mr-2 mb-2">
 								<StrapiImage image={review.image} size="thumbnail" className="max-w-23" />
 							</div>
-							<div className="line-clamp-4">
+							<div className="line-clamp-5">
 								<StrapiRichTextBlocks content={review.content} isPlain={true} />
 							</div>
 						</div>
