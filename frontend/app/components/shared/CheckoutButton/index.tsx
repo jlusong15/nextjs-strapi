@@ -1,8 +1,8 @@
 "use client"
 
 import { checkoutBook } from "@/app/services/book-reviews.service"
+import { type VariantProps } from "class-variance-authority"
 import { Button, buttonVariants } from "../../ui/button"
-import { cva, type VariantProps } from "class-variance-authority"
 
 type Props = {
 	checkoutItem: {
@@ -33,7 +33,7 @@ export default function CheckoutButton({
 	}
 
 	return (
-		<Button onClick={handleBookCheckout} {...props}>
+		<Button {...props} onClick={handleBookCheckout}>
 			{children}
 		</Button>
 	)

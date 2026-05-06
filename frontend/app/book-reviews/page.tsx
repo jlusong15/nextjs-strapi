@@ -1,10 +1,11 @@
 import Link from "next/link"
 import SubPageLayout from "../components/layout/Subpages"
-import StarRating from "../components/shared/Rating"
-import { fetchBookReviews } from "../services/book-reviews.service"
-import StrapiRichTextBlocks from "../components/shared/StrapiRichTextBlock"
-import StrapiImage from "../components/shared/StrapiImage"
 import CheckoutButton from "../components/shared/CheckoutButton"
+import LinkButton from "../components/shared/LinkButton"
+import StarRating from "../components/shared/Rating"
+import StrapiImage from "../components/shared/StrapiImage"
+import StrapiRichTextBlocks from "../components/shared/StrapiRichTextBlock"
+import { fetchBookReviews } from "../services/book-reviews.service"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
@@ -15,6 +16,14 @@ export default async function BookReview() {
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
 					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
 				</div>
+				{/* <div>
+					<LinkButton
+						href="/book-reviews/submit-review"
+						className="inline-flex items-center uppercase px-3 py-1.5 no-underline! rounded bg-primary transition text-white hover:bg-gray-600"
+					>
+						Submit book review
+					</LinkButton>
+				</div> */}
 				{bookReviews?.map((review, i) => (
 					<div key={i} className="flex flex-col py-5 border-b border-gray-200 my-2.5 gap-3">
 						<div className="flex flex-col justify-between sm:flex-row sm:justify-between sm:items-center gap-2">
