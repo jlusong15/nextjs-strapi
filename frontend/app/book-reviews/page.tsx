@@ -9,6 +9,7 @@ import { fetchBookReviews } from "../services/book-reviews.service"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
+	const isDev = process.env.NODE_ENV === "development"
 
 	return (
 		<div className="w-full">
@@ -16,14 +17,16 @@ export default async function BookReview() {
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
 					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
 				</div>
-				<div>
-					<LinkButton
-						href="/book-reviews/submit-review"
-						className="inline-flex items-center uppercase px-3 py-1.5 no-underline! rounded bg-primary transition text-white hover:bg-gray-600"
-					>
-						Submit book review
-					</LinkButton>
-				</div>
+				{isDev && (
+					<div>
+						<LinkButton
+							href="/book-reviews/submit-review"
+							className="inline-flex items-center uppercase px-3 py-1.5 no-underline! rounded bg-primary transition text-white hover:bg-gray-600"
+						>
+							Submit book review
+						</LinkButton>
+					</div>
+				)}
 				<div className="max-w-4xl w-full">
 					{bookReviews?.map((review, i) => (
 						<div key={i} className="flex flex-col py-5 border-b border-gray-200 my-2.5 gap-3">
