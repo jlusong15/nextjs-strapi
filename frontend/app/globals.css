@@ -155,6 +155,35 @@
 		margin-top: 1em;
 		margin-bottom: 1em;
 	}
+
+	/* TipTap */
+	.tiptap p {
+		@apply my-2 leading-7;
+	}
+
+	.tiptap h1 {
+		@apply text-2xl font-bold my-3;
+	}
+
+	.tiptap h2 {
+		@apply text-xl font-semibold my-2;
+	}
+
+	.tiptap ul {
+		@apply list-disc pl-5 my-2;
+	}
+
+	.tiptap ol {
+		@apply list-decimal pl-5 my-2;
+	}
+
+	.tiptap blockquote {
+		@apply border-l-4 border-gray-300 pl-4 italic text-gray-600;
+	}
+
+	.tiptap pre {
+		@apply bg-gray-900 text-white p-3 rounded-md overflow-x-auto;
+	}
 }
 
 html {

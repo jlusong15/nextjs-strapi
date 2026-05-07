@@ -1,15 +1,15 @@
 "use client"
 
-import RichTextEditor from "@/app/components/shared/RichTextEditor/page"
 import { Button } from "@/app/components/ui/button"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/app/components/ui/form"
 import { Input } from "@/app/components/ui/input"
-import { mapTiptapToBlocks } from "@/app/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { BookFormValues, bookSchema } from "./schema"
 import { postBookReview } from "@/app/services/book-reviews.service"
+import TipTapEditor from "@/app/components/shared/TipTapEditor/page"
+import { mapTiptapToBlocks } from "@/app/lib/editor.util"
 
 export default function BookSubmitForm() {
 	const methods = useForm<BookFormValues>({
@@ -101,7 +101,7 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Content</FormLabel>
 							<FormControl>
-								<RichTextEditor {...field} />
+								<TipTapEditor {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
