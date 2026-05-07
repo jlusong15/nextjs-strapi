@@ -14,16 +14,21 @@ export interface BookReviewModel {
 	id: number
 	documentId: string
 	title: string
-	rating: number
+	rating: number | null
 	body: string
 	createdAt: string
 	updatedAt: string
 	publishedAt: string
-	image: StrapiImageData
+	image: StrapiImageData | null
 	author: string
-	price: number | undefined
-	content: StrapiRichTextBlock[]
+	price: number | undefined | null
+	content: StrapiRichTextBlock[] | null
 }
+
+export type CreateBookReviewModel = Omit<
+  BookReviewModel,
+  "id" | "documentId" | "body" | "createdAt" | "updatedAt" | "publishedAt"
+>
 
 export type StrapiRichTextBlock = {
 	type: string

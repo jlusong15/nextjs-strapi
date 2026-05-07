@@ -1,5 +1,5 @@
 import api from "../lib/api";
-import { fetcher, postFetcher } from "../lib/next-fetcher";
+import { fetcher, postFetcher, postFormDataFetcher } from "../lib/next-fetcher";
 import { mapDocs } from "../lib/utils";
 import { TagTypeId } from "../store/tagType";
 import { BookReviewModel, AllBookReviewResponseModel, SingleBookReviewResponseModel } from "../types/book-review.model";
@@ -39,4 +39,8 @@ export async function fetchSingleBookReview(id: string): Promise<BookReviewModel
 
 export async function checkoutBook(body: CheckoutModel): Promise<any> {
 	return await postFetcher<{ url: string }>('/checkout', body)
+}
+
+export async function postBookReview(data: FormData, options = {}): Promise<any> {
+	return await postFormDataFetcher<{ url: string }>('/book-reviews', data, options)
 }

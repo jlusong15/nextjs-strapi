@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function mapDocs<T>(res: { data?: T }): T | undefined {
-  return res.data;
+	return res.data;
 }
 
 export function cleanedObj<T>(obj: T) {
@@ -16,4 +16,20 @@ export function cleanedObj<T>(obj: T) {
 	return Object.fromEntries(
 		Object.entries(obj).filter(([key, value]) => value !== '' && value !== null)
 	);
+}
+
+export function mapTiptapToBlocks(data: InputDoc): OutputNode[] {
+	function transform(node: InputNode): OutputNode {
+		return {
+			type: node.type,
+			...(node.text ? { text: node.text } : {}),
+			...(node.content
+				? {
+					children: node.content.map(transform),
+				}
+				: {}),
+		}
+	}
+	const content = typeof data === 'string' ? JSON.parse(data)?.content : data?.content
+	return content?.map(transform)
 }

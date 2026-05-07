@@ -8,7 +8,10 @@ export default function SubmitBookReview() {
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
 					<small className="text-gray-500!">Details will be saved to Strapi through a Next.js API proxy.</small>
 				</div>
-				<div><BookSubmitForm /></div>
+				<div><span className="text-xl pb-2 block w-full text-center">This page is under construction :)</span></div>
+				<div className="max-w-4xl w-full">
+					<BookSubmitForm />
+				</div>
 			</SubPageLayout>
 		</div>
 	)

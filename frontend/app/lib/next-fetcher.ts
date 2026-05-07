@@ -36,7 +36,6 @@ export async function fetcher<T>(
 	return res.json();
 }
 
-
 export async function postFetcher<T>(
 	endpoint: string,
 	body: any,
@@ -47,4 +46,24 @@ export async function postFetcher<T>(
 		method: "POST",
 		body: JSON.stringify(body),
 	});
+}
+
+export async function postFormDataFetcher<T>(
+	endpoint: string,
+	data: FormData,
+	options: FetchOptions = {}
+): Promise<T> {
+	const res = await fetch(`${BASE_URL}${endpoint}`, {
+		method: "POST",
+		body: data,
+	})
+	if (!res.ok) {
+		const errorText = await res.text();
+		console.error(
+			`API Error ${res.status}: ${res.statusText}`,
+			errorText
+		);
+		throw new Error(`Request failed with status ${res.status}`);
+	}
+	return res.json();
 }
