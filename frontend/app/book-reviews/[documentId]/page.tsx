@@ -29,7 +29,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 				<div className="py-5 my-2.5 flex flex-col gap-5">
 					<div className="flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-2">
 						<div>
-							<StarRating value={review.rating} size={40} readonly />
+							<StarRating value={review?.rating || 0} size={40} readonly />
 						</div>
 						<div className="flex gap-2">
 							<Link
@@ -59,7 +59,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 						/>
 
 						<div className="flex-1">
-							<StrapiRichTextBlocks content={review.content} />
+							<StrapiRichTextBlocks content={review?.content || []} />
 						</div>
 					</div>
 				</div>
