@@ -45,7 +45,7 @@ my-app/
 - TypeScript
 - TailwindCSS
 - Redux Toolkit
-- RTK Query
+- RTK Query/Zustand
 - Shadcn UI
 
 ## Run React Project
@@ -53,6 +53,7 @@ my-app/
 ```bash
 cd frontend
 npm run dev
+```
 
 ### Backend
 - Strapi v4+ (on Railway; Migrated from Render)
@@ -64,3 +65,4 @@ npm run dev
 ```bash
 cd backend
 npm run dev
+```
