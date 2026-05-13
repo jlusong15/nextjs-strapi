@@ -40,27 +40,29 @@ my-app/
 
 # ⚙️ Tech Stack
 
-### Frontend
+## Frontend
 - Next.js (App Router)
 - TypeScript
 - TailwindCSS
 - Redux Toolkit
-- RTK Query
+- RTK Query/Zustand
 - Shadcn UI
 
-## Run React Project
+### Run React Project
 
 ```bash
 cd frontend
 npm run dev
+```
 
-### Backend
+## Backend
 - Strapi v4+ (on Railway; Migrated from Render)
 - PostgreSQL (on Supabase)
 - REST API
 
-## Run Strapi Project
+### Run Strapi Project
 
 ```bash
 cd backend
 npm run dev
+```
