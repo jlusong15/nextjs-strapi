@@ -1,4 +1,4 @@
-import { BookA, House, LucideIcon, Watch } from "lucide-react";
+import { BookA, House, LucideIcon, Radio } from "lucide-react";
 
 export interface NavModel {
 	name: string
@@ -8,6 +8,6 @@ export interface NavModel {
 
 export const NavLinks = [
 	{ name: 'Home', icon: House, route: '/' },
-	{ name: 'Book Reviews', icon: BookA, route: '/book-reviews' },
-	{ name: 'Events', icon: Watch, route: '/stream' },
+	{ name: 'Books', icon: BookA, route: '/book-reviews' },
+	{ name: 'Stream', icon: Radio, route: '/stream' },
 ];
