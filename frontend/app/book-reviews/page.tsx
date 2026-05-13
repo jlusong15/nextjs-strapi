@@ -15,7 +15,7 @@ export default async function BookReview() {
 		<div className="w-full">
 			<SubPageLayout title="Book Reviews">
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
-					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy.</small>
+					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.</small>
 				</div>
 				{isDev && (
 					<div>
