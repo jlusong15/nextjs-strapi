@@ -7,11 +7,6 @@
       "script": "dev",
       "isBackground": true,
       "problemMatcher": {
-        "pattern": [
-          {
-            "regexp": "."
-          }
-        ],
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".*",

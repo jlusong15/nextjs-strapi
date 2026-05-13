@@ -24,7 +24,9 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 		<div className="w-full">
 			<SubPageLayout title={review.title}>
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
-					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.</small>
+					<small className="text-gray-500!">
+						Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.
+					</small>
 				</div>
 				<div className="py-5 my-2.5 flex flex-col gap-5">
 					<div className="flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-2">
