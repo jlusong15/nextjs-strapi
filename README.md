@@ -5,12 +5,9 @@ Link to live demo: https://nextjs-strapi-sepia.vercel.app/
 A modern full-stack setup using:
 - ⚡ Next.js (App Router)
 - 🔥 Strapi (Headless CMS)
-- 🧠 Redux Toolkit + RTK Query
 - ⚛️ Server-side rendering (SSR)
-- 🎯 Client-side hydration (RTK Query cache)
 - 🎨 TailwindCSS
 - 💰 Stripe (Payment Gateway)
-- 🧩 Zustand-ready structure (optional UI state)
 
 ---
 
