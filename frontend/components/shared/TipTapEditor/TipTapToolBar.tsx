@@ -1,6 +1,6 @@
 "use client"
 
-import { Bold, Heading1, Italic, List, ListOrdered, Redo, Underline as UnderlineIcon, Undo } from "lucide-react"
+import { Bold, Italic, Redo, Underline as UnderlineIcon, Undo } from "lucide-react"
 
 export default function TipTapToolbar({ editor }: { editor: any }) {
 	if (!editor) return null

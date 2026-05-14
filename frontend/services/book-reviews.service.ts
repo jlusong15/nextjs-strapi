@@ -1,8 +1,8 @@
-import api from "../../lib/api";
-import { fetcher, postFetcher, postFormDataFetcher } from "../../lib/next-fetcher";
-import { mapDocs } from "../../lib/utils";
+import api from "@/lib/api";
+import { fetcher, postFetcher, postFormDataFetcher } from "@/lib/next-fetcher";
+import { mapDocs } from "../lib/utils";
 import { TagTypeId } from "../store/tagType";
-import { BookReviewModel, AllBookReviewResponseModel, SingleBookReviewResponseModel } from "../types/book-review.model";
+import { AllBookReviewResponseModel, BookReviewModel, SingleBookReviewResponseModel } from "../types/book-review.model";
 import { CheckoutModel } from "../types/checkout.model";
 
 /**

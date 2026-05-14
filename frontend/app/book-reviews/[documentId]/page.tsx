@@ -1,9 +1,9 @@
-import SubPageLayout from "@/app/components/layout/Subpages"
-import CheckoutButton from "@/app/components/shared/CheckoutButton"
-import StarRating from "@/app/components/shared/Rating"
-import StrapiImage from "@/app/components/shared/StrapiImage"
-import StrapiRichTextBlocks from "@/app/components/shared/StrapiRichTextBlock"
-import { fetchSingleBookReview } from "@/app/services/book-reviews.service"
+import SubPageLayout from "@/components/layout/Subpages"
+import CheckoutButton from "@/components/shared/CheckoutButton"
+import StarRating from "@/components/shared/Rating"
+import StrapiImage from "@/components/shared/StrapiImage"
+import StrapiRichTextBlocks from "@/components/shared/StrapiRichTextBlock"
+import { fetchSingleBookReview } from "@/services/book-reviews.service"
 import Link from "next/link"
 
 type ViewBookReviewProps = {

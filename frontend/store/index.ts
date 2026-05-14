@@ -1,6 +1,6 @@
+import api from '@/lib/api';
+import { bookReviewsApi } from '@/services/book-reviews.service';
 import { configureStore } from '@reduxjs/toolkit';
-import api from '../lib/api';
-import { bookReviewsApi } from '../services/book-reviews.service';
 
 export const store = configureStore({
 	reducer: {

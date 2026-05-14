@@ -1,5 +1,5 @@
-import { bookReviewsApi } from "@/app/services/book-reviews.service"
-import { BookReviewModel } from "@/app/types/book-review.model"
+import { bookReviewsApi } from "@/services/book-reviews.service"
+import { BookReviewModel } from "@/types/book-review.model"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../.."
 

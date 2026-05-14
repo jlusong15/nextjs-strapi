@@ -1,4 +1,4 @@
-import { strapiFetch, strapiPost, strapiUpload } from "@/app/lib/strapi-fetcher"
+import { strapiFetch, strapiPost, strapiUpload } from "@/lib/strapi-fetcher"
 import { NextResponse } from "next/server"
 
 export async function GET() {

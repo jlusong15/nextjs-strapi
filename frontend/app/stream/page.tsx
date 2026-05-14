@@ -1,8 +1,8 @@
 "use client"
 
+import SubPageLayout from "@/components/layout/Subpages"
 import { useVirtualizer } from "@tanstack/react-virtual"
 import { useEffect, useRef, useState } from "react"
-import SubPageLayout from "../components/layout/Subpages"
 
 type WikiChange = {
 	id: number

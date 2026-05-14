@@ -1,8 +1,8 @@
 "use client"
 
-import { checkoutBook } from "@/app/services/book-reviews.service"
 import { type VariantProps } from "class-variance-authority"
 import { Button, buttonVariants } from "../../ui/button"
+import { checkoutBook } from "@/services/book-reviews.service"
 
 type Props = {
 	checkoutItem: {

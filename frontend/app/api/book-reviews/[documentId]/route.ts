@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { strapiFetch } from "@/app/lib/strapi-fetcher"
+import { strapiFetch } from "@/lib/strapi-fetcher"
 
 export async function GET(
 	request: NextRequest,

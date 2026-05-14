@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Cat, X } from "lucide-react";
-import { NavLinks } from "@/app/types/nav.model";
+import { NavLinks } from "@/types/nav.model";
 
 interface MenuNavProps {
-  onSidebarToggle?: (open: boolean) => void; // 👈 OUTPUT
+  onSidebarToggle?: (open: boolean) => void;
 }
 
 export default function MenuNav({ onSidebarToggle }: MenuNavProps) {
@@ -15,8 +15,6 @@ export default function MenuNav({ onSidebarToggle }: MenuNavProps) {
   const toggleSidebar = () => {
     setIsOpen((v) => {
       const next = !v;
-
-      // 👇 emit state to parent (like Angular EventEmitter)
       onSidebarToggle?.(next);
 
       return next;

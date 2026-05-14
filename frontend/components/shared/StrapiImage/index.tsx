@@ -1,4 +1,5 @@
-import { StrapiImageData } from "@/app/types/strapi-image.model"
+
+import { StrapiImageData } from "@/types/strapi-image.model"
 import Image, { ImageProps } from "next/image"
 
 type Size = "thumbnail" | "small" | "medium" | "original"

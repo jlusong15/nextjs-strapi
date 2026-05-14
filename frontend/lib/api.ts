@@ -1,5 +1,5 @@
+import { TagTypes } from '@/store/tagType';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { TagTypes } from '../store/tagType';
 
 // The One API
 const API_BASE_URL = 'the-one-api.dev'

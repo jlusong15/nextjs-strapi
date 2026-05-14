@@ -1,11 +1,11 @@
+import SubPageLayout from "@/components/layout/Subpages"
+import CheckoutButton from "@/components/shared/CheckoutButton"
+import LinkButton from "@/components/shared/LinkButton"
+import StarRating from "@/components/shared/Rating"
+import StrapiImage from "@/components/shared/StrapiImage"
+import StrapiRichTextBlocks from "@/components/shared/StrapiRichTextBlock"
+import { fetchBookReviews } from "@/services/book-reviews.service"
 import Link from "next/link"
-import SubPageLayout from "../components/layout/Subpages"
-import CheckoutButton from "../components/shared/CheckoutButton"
-import LinkButton from "../components/shared/LinkButton"
-import StarRating from "../components/shared/Rating"
-import StrapiImage from "../components/shared/StrapiImage"
-import StrapiRichTextBlocks from "../components/shared/StrapiRichTextBlock"
-import { fetchBookReviews } from "../services/book-reviews.service"
 
 export default async function BookReview() {
 	const bookReviews = await fetchBookReviews()
@@ -15,7 +15,9 @@ export default async function BookReview() {
 		<div className="w-full">
 			<SubPageLayout title="Book Reviews">
 				<div className="border-b border-b-gray-100 pb-2 mb-5">
-					<small className="text-gray-500!">Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.</small>
+					<small className="text-gray-500!">
+						Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.
+					</small>
 				</div>
 				{isDev && (
 					<div>

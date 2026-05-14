@@ -1,4 +1,4 @@
-import { StrapiRichTextBlock } from "@/app/types/book-review.model"
+import { StrapiRichTextBlock } from "@/types/book-review.model"
 import { JSX } from "react"
 
 function extractPlainText(blocks: StrapiRichTextBlock[]): string {

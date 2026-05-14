@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { DM_Sans, Geist } from "next/font/google"
-import MenuNav from "./components/layout/MenuNav"
 import "./globals.css"
 import Providers from "./providers"
 import { cn } from "@/lib/utils"
+import MenuNav from "@/components/layout/MenuNav"
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
