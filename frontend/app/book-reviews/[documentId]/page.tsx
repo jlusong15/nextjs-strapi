@@ -1,5 +1,5 @@
 import BookReviewDetailClient from "@/features/book-reviews/BookReviewDetailClient"
-import { prefetchBookReview } from "@/features/book-reviews/server"
+import { prefetchSingleBookReview } from "@/features/book-reviews/server"
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query"
 
 type ViewBookReviewProps = {
@@ -16,7 +16,7 @@ export default async function ViewBookReview({ params }: ViewBookReviewProps) {
 	const documentId = p?.documentId
 	const queryClient = new QueryClient()
 
-	await prefetchBookReview(queryClient, documentId)
+	await prefetchSingleBookReview(queryClient, documentId)
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

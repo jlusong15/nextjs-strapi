@@ -1,13 +1,13 @@
 import SubPageLayout from "@/components/layout/Subpages"
 import LinkButton from "@/components/shared/LinkButton"
 import BookReviewsClient from "@/features/book-reviews/BookReviewsClient"
-import { prefetchBookReviews } from "@/features/book-reviews/server"
+import { prefetchAllBookReviews } from "@/features/book-reviews/server"
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query"
 
 export default async function BookReview() {
 	const queryClient = new QueryClient()
 
-	await prefetchBookReviews(queryClient)
+	await prefetchAllBookReviews(queryClient)
 
 	const isDev = process.env.NODE_ENV === "development"
 
