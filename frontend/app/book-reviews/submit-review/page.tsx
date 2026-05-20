@@ -1,5 +1,5 @@
 import SubPageLayout from "@/components/layout/Subpages"
-import BookSubmitForm from "./BookSubmitForm"
+import BookSubmitForm from "@/features/book-reviews/BookSubmitForm"
 
 export default function SubmitBookReview() {
 	return (

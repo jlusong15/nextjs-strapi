@@ -1,25 +1,18 @@
 "use client"
 
-import Link from "next/link"
+import SubPageLayout from "@/components/layout/Subpages"
 import CheckoutButton from "@/components/shared/CheckoutButton"
 import StarRating from "@/components/shared/Rating"
 import StrapiImage from "@/components/shared/StrapiImage"
 import StrapiRichTextBlocks from "@/components/shared/StrapiRichTextBlock"
-import { useQuery } from "@tanstack/react-query"
-import { bookReviewsKeys } from "./keys"
-import { getBookReview } from "./api"
-import SubPageLayout from "@/components/layout/Subpages"
+import Link from "next/link"
+import { useBookReviewDetail } from "./hooks"
 
 export default function BookReviewDetailClient({ documentId }: { documentId: string }) {
-	const { data: review } = useQuery({
-		queryKey: bookReviewsKeys.detail(documentId),
-		queryFn: () => getBookReview(documentId),
-	})
-
-	if (!review) return null
+	const { data: review, isLoading, error } = useBookReviewDetail(documentId)
 
 	return (
-		<SubPageLayout title={review.title}>
+		<SubPageLayout title={review?.title || "Book Review Detail"}>
 			<div className="border-b border-b-gray-100 pb-2 mb-5">
 				<small className="text-gray-500!">
 					Details are retrieved from Strapi through a Next.js API proxy with Stripe integration.
@@ -51,14 +44,18 @@ export default function BookReviewDetailClient({ documentId }: { documentId: str
 					</div>
 				</div>
 				<div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-					<StrapiImage
-						image={review.image}
-						size="original"
-						className="w-full max-w-40 sm:max-w-50 h-auto object-contain mt-4"
-					/>
+					{review?.image && (
+						<StrapiImage
+							image={review?.image}
+							size="original"
+							className="w-full max-w-40 sm:max-w-50 h-auto object-contain mt-4"
+						/>
+					)}
 
 					<div className="flex-1">
-						<StrapiRichTextBlocks content={review?.content || []} />
+						{isLoading && <div>Loading...</div>}
+						{error && <div>An error occurred while fetching.</div>}
+						{review?.content && <StrapiRichTextBlocks content={review?.content} />}
 					</div>
 				</div>
 			</div>

@@ -4,8 +4,6 @@ import Placeholder from "@tiptap/extension-placeholder"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import TipTapToolbar from "./TipTapToolBar"
-import Underline from "@tiptap/extension-underline"
-import Link from "@tiptap/extension-link"
 
 type TipTapEditorProps = {
 	value?: any
@@ -16,10 +14,6 @@ export default function TipTapEditor({ value, onChange, ...props }: TipTapEditor
 	const editor = useEditor({
 		extensions: [
 			StarterKit,
-			Underline,
-			Link.configure({
-				openOnClick: false,
-			}),
 			Placeholder.configure({
 				placeholder: "Write something...",
 			}),

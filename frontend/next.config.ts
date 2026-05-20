@@ -2,7 +2,21 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	images: {
-		domains: ["localhost", "nextjs-strapi-production.up.railway.app", "nextjs-strapi-sepia.vercel.app"],
+		remotePatterns: [
+			{
+				protocol: 'http',
+				hostname: 'localhost',
+				port: '3000',
+			},
+			{
+				protocol: 'https',
+				hostname: 'nextjs-strapi-production.up.railway.app',
+			},
+			{
+				protocol: 'https',
+				hostname: 'nextjs-strapi-sepia.vercel.app',
+			},
+		],
 	},
 };
 
