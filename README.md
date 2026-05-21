@@ -18,16 +18,12 @@ my-app/
 ├── frontend/ # Next.js app
 │ ├── app/
 │ ├── api/
-│ ├── store/
-│ │ ├── slices/
-│ │ ├── hooks.ts # Redux Hooks
-│ │ ├── index.ts # Redux Store
-│ │ ├── tagType.ts # Redux Store
 │ ├── components/
+│ ├── features/
 │ ├── lib/
 │ ├── services/
 │ ├── types/
-│ └── providers.tsx
+│ └── providers/
 │
 ├── backend/ # Strapi CMS
 │ ├── src/
@@ -42,9 +38,9 @@ my-app/
 - Next.js (App Router)
 - TypeScript
 - TailwindCSS
-- Redux Toolkit
-- RTK Query/Zustand
+- TanStack Query
 - Shadcn UI
+- Stripe
 
 ### Run React Project
 
