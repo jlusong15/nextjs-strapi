@@ -16,7 +16,7 @@ export default function LinkButton({ href, children, className, ...props }: Prop
 			{...props}
 			href={href}
 			className={cn(
-				"inline-flex items-center uppercase px-3 py-1.5 no-underline! rounded bg-primary transition text-white hover:bg-gray-600",
+				"inline-flex items-center px-3 py-1.5 no-underline! rounded bg-primary transition text-white hover:bg-gray-600",
 				className,
 			)}
 		>

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { mapTiptapToBlocks } from "@/lib/editor.util"
 import { postBookReview } from "@/services/book-reviews.service"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
 import { FormProvider, useForm } from "react-hook-form"
 import { BookFormValues, bookSchema } from "./schema"
 
@@ -23,20 +23,7 @@ export default function BookSubmitForm() {
 			// rating: 1
 		},
 	})
-	const { control, handleSubmit, reset, getValues } = methods
-	const [loading, setLoading] = useState(false)
-
-	const onSubmit = async (data: BookFormValues) => {
-		try {
-			setLoading(true)
-			await formDataPostBookReview(data)
-			reset()
-		} catch (err) {
-			console.error("Submit error:", err)
-		} finally {
-			setLoading(false)
-		}
-	}
+	const { control, handleSubmit, reset } = methods
 
 	const formDataPostBookReview = (data: BookFormValues) => {
 		const formData = new FormData()
@@ -47,6 +34,21 @@ export default function BookSubmitForm() {
 		formData.append("price", "777")
 		formData.append("content", JSON.stringify(contentBlocks))
 		return postBookReview(formData)
+	}
+
+	const { isPending, error, mutate } = useMutation({
+		mutationFn: formDataPostBookReview,
+		onSuccess: () => {
+			reset()
+		},
+		onError: (err) => {
+			console.error("Submit error:", err)
+		},
+	})
+
+	const onSubmit = (data: BookFormValues) => {
+		console.log("Submitting form with data:", data)
+		mutate(data)
 	}
 
 	return (
@@ -122,9 +124,14 @@ export default function BookSubmitForm() {
 					)}
 				/> */}
 
-				<Button onClick={handleSubmit(onSubmit)} disabled={loading}>
-					{loading ? "Submitting..." : "Submit Book"}
+				<Button onClick={handleSubmit(onSubmit)} disabled={isPending}>
+					{isPending ? "Submitting..." : "Submit Book"}
 				</Button>
+				{error && (
+					<div className="text-red-600 text-sm mt-2">
+						Error: {error instanceof Error ? error.message : "An error occurred"}
+					</div>
+				)}
 			</div>
 		</FormProvider>
 	)
