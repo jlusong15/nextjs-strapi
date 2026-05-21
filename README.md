@@ -3,11 +3,12 @@ Link to live demo: https://nextjs-strapi-sepia.vercel.app/
 # 🚀 Next.js + Strapi (SSR Hydration Setup)
 
 A modern full-stack setup using:
-- ⚡ Next.js (App Router)
-- 🔥 Strapi (Headless CMS)
-- ⚛️ Server-side rendering (SSR)
-- 🎨 TailwindCSS
-- 💰 Stripe (Payment Gateway)
+- ⚡ **Next.js** for full-stack React development
+- 🔥 **Strapi** for content and API management
+- ⚛️ **Server-side rendering (SSR)** for better SEO and performance
+- 🎨 **Tailwind CSS** for modern and responsive UI styling
+- 🧠 **TanStack Query** for server state management and API caching
+- 💰 **Stripe** for secure online payment processing
 
 ---
 
