@@ -42,11 +42,9 @@ export default function BookReviewsClient() {
 								</span>
 							</div>
 							<div className="flex flex-row gap-2 items-start">
-								{review.image && (
-									<div className="mr-2 mb-2">
-										<StrapiImage image={review.image} size="thumbnail" className="max-w-23" />
-									</div>
-								)}
+								<div className="mr-2 mb-2">
+									<StrapiImage image={review.image} size="thumbnail" className="max-w-23" />
+								</div>
 								<div className="line-clamp-5">
 									<StrapiRichTextBlocks content={review.content || []} isPlain={true} />
 								</div>

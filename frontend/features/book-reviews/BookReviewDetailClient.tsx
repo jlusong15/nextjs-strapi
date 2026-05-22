@@ -44,13 +44,11 @@ export default function BookReviewDetailClient({ documentId }: { documentId: str
 					</div>
 				</div>
 				<div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-					{review?.image && (
-						<StrapiImage
-							image={review?.image}
-							size="original"
-							className="w-full max-w-40 sm:max-w-50 h-auto object-contain mt-4"
-						/>
-					)}
+					<StrapiImage
+						image={review?.image}
+						size="original"
+						className="w-full max-w-40 sm:max-w-50 h-auto object-contain mt-4"
+					/>
 
 					<div className="flex-1">
 						{isLoading && <div>Loading...</div>}
