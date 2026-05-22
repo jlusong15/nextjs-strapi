@@ -125,9 +125,11 @@ export default function BookSubmitForm() {
 					)}
 				/>
 
-				<Button onClick={handleSubmit(onSubmit)} disabled={isPending}>
-					{isPending ? "Submitting..." : "Submit Book"}
-				</Button>
+				<div className="w-auto">
+					<Button onClick={handleSubmit(onSubmit)} disabled={isPending}>
+						{isPending ? "Submitting..." : "Submit Review"}
+					</Button>
+				</div>
 				{error && (
 					<div className="text-red-600 text-sm mt-2">
 						Error: {error instanceof Error ? error.message : "An error occurred"}
