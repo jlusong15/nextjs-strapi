@@ -20,18 +20,13 @@ export const bookSchema = z.object({
 				return false
 			}
 		}, { message: "Content is required" }),
-	// price: z.union([
-	// 	z.literal(''),
-	// 	z.coerce.number().min(0, 'Amount cannot be negative'),
-	// ])
-	// 	.optional(),
-	// price: z
-	// 	.union([
-	// 		z.literal(''),
-	// 		z.coerce.number().min(0),
-	// 	])
-	// 	.transform((val) => (val === '' ? undefined : val))
-	// 	.optional(),
+	price: z.preprocess(
+		(val) => {
+			if (val === "" || val === null || val === undefined) return undefined
+			return Number(val)
+		},
+		z.number().gt(0, { message: "Price must be greater than zero" }).optional()
+	),
 })
 
 export type BookFormValues = z.infer<typeof bookSchema>

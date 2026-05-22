@@ -8,20 +8,20 @@ import { mapTiptapToBlocks } from "@/lib/editor.util"
 import { postBookReview } from "@/services/book-reviews.service"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
-import { FormProvider, useForm } from "react-hook-form"
+import { FormProvider, useForm, type Resolver } from "react-hook-form"
 import { BookFormValues, bookSchema } from "./schema"
 import StarRating from "@/components/shared/Rating"
 
 export default function BookSubmitForm() {
 	const methods = useForm<BookFormValues>({
 		mode: "onChange",
-		resolver: zodResolver(bookSchema),
+		resolver: zodResolver(bookSchema) as Resolver<BookFormValues>,
 		defaultValues: {
 			title: "",
 			author: "",
 			content: "",
 			rating: 0,
-			// price: undefined,
+			price: undefined,
 		},
 	})
 	const { control, handleSubmit, reset } = methods
@@ -32,7 +32,7 @@ export default function BookSubmitForm() {
 		formData.append("title", String(data?.title?.trim() || ""))
 		formData.append("author", String(data?.author?.trim() || ""))
 		formData.append("rating", data?.rating ? String(data.rating) : "0")
-		// formData.append("price", data?.price ? String(data.price) : "")
+		formData.append("price", data?.price ? String(data.price) : "")
 		formData.append("content", contentBlocks?.length ? JSON.stringify(contentBlocks) : "")
 		return postBookReview(formData)
 	}
@@ -111,7 +111,7 @@ export default function BookSubmitForm() {
 					)}
 				/>
 
-				{/* <FormField
+				<FormField
 					control={control}
 					name="price"
 					render={({ field }) => (
@@ -123,7 +123,7 @@ export default function BookSubmitForm() {
 							<FormMessage />
 						</FormItem>
 					)}
-				/> */}
+				/>
 
 				<Button onClick={handleSubmit(onSubmit)} disabled={isPending}>
 					{isPending ? "Submitting..." : "Submit Book"}
