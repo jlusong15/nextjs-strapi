@@ -8,9 +8,11 @@ import TipTapToolbar from "./TipTapToolBar"
 type TipTapEditorProps = {
 	value?: any
 	onChange: (value: any) => void
+	hasError?: boolean
 }
 
-export default function TipTapEditor({ value, onChange, ...props }: TipTapEditorProps) {
+export default function TipTapEditor({ value, onChange, hasError, ...props }: TipTapEditorProps) {
+  const error = hasError
 	const editor = useEditor({
 		extensions: [
 			StarterKit,
@@ -37,7 +39,7 @@ export default function TipTapEditor({ value, onChange, ...props }: TipTapEditor
 	// }, [editor])
 
 	return (
-		<div className="border rounded-lg overflow-hidden">
+		<div className={`border rounded-lg overflow-hidden ${error ? "border-red-600" : "border-gray-200"}`}>
 			<TipTapToolbar editor={editor} /> <EditorContent editor={editor} {...props} />
 		</div>
 	)

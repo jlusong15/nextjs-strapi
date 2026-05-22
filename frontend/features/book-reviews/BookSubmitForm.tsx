@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
 import { FormProvider, useForm } from "react-hook-form"
 import { BookFormValues, bookSchema } from "./schema"
+import StarRating from "@/components/shared/Rating"
 
 export default function BookSubmitForm() {
 	const methods = useForm<BookFormValues>({
@@ -19,8 +20,8 @@ export default function BookSubmitForm() {
 			title: "",
 			author: "",
 			content: "",
-			// price: null,
-			// rating: 1
+			rating: 0,
+			// price: undefined,
 		},
 	})
 	const { control, handleSubmit, reset } = methods
@@ -28,11 +29,11 @@ export default function BookSubmitForm() {
 	const formDataPostBookReview = (data: BookFormValues) => {
 		const formData = new FormData()
 		const contentBlocks = data.content ? mapTiptapToBlocks(data.content) : null
-		formData.append("title", String(data.title))
-		formData.append("author", String(data.author))
-		formData.append("rating", "3")
-		formData.append("price", "777")
-		formData.append("content", JSON.stringify(contentBlocks))
+		formData.append("title", String(data?.title?.trim() || ""))
+		formData.append("author", String(data?.author?.trim() || ""))
+		formData.append("rating", data?.rating ? String(data.rating) : "0")
+		// formData.append("price", data?.price ? String(data.price) : "")
+		formData.append("content", contentBlocks?.length ? JSON.stringify(contentBlocks) : "")
 		return postBookReview(formData)
 	}
 
@@ -82,28 +83,28 @@ export default function BookSubmitForm() {
 					)}
 				/>
 
-				{/* <FormField
+				<FormField
 					control={control}
 					name="rating"
-					render={({ field }) => (
+					render={({ field, fieldState }) => (
 						<FormItem>
 							<FormLabel>Rating</FormLabel>
 							<FormControl>
-								<Input {...field} type="number" min={1} max={5} />
+								<StarRating value={field?.value || 0} onChange={(value) => field.onChange(value)} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}
-				/> */}
+				/>
 
 				<FormField
 					control={control}
 					name="content"
-					render={({ field }) => (
+					render={({ field, fieldState }) => (
 						<FormItem>
 							<FormLabel>Content</FormLabel>
 							<FormControl>
-								<TipTapEditor {...field} />
+								<TipTapEditor {...field} hasError={!!fieldState.error} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

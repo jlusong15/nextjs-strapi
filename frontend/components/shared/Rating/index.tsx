@@ -21,6 +21,8 @@ export default function StarRating({ value = 0, max = 5, size = 24, onChange, re
 	const displayValue = hoverValue ?? value
 
 	return (
+		// Red border for error state, transparent otherwise
+		// <div style={{ display: "flex", gap: 6, padding: "8px", borderRadius: "6px", border: `2px solid ${hasError ? "#dc2626" : "transparent"}` }}>
 		<div style={{ display: "flex", gap: 6 }}>
 			{Array.from({ length: max }, (_, i) => {
 				const starValue = i + 1
