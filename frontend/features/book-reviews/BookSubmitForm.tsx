@@ -8,20 +8,20 @@ import { mapTiptapToBlocks } from "@/lib/editor.util"
 import { postBookReview } from "@/services/book-reviews.service"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
-import { FormProvider, useForm, type Resolver } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import { BookFormValues, bookSchema } from "./schema"
 import StarRating from "@/components/shared/Rating"
 
 export default function BookSubmitForm() {
-	const methods = useForm<BookFormValues>({
+	const methods = useForm({
 		mode: "onChange",
-		resolver: zodResolver(bookSchema) as Resolver<BookFormValues>,
+		resolver: zodResolver(bookSchema),
 		defaultValues: {
 			title: "",
 			author: "",
 			content: "",
 			rating: 0,
-			price: undefined,
+			price: "",
 		},
 	})
 	const { control, handleSubmit, reset } = methods
@@ -48,8 +48,7 @@ export default function BookSubmitForm() {
 	})
 
 	const onSubmit = (data: BookFormValues) => {
-		console.log("Submitting form with data:", data)
-		mutate(data)
+		mutate(data as BookFormValues)
 	}
 
 	return (
