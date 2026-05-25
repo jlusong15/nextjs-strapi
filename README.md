@@ -9,6 +9,7 @@ A modern full-stack setup using:
 - 🎨 **Tailwind CSS** for modern and responsive UI styling
 - 🧠 **TanStack Query** for server state management and API caching
 - 🚀 **TanStack Virtualizer** for efficient rendering of large lists and improved scrolling performance
+- 🔄 **Server-Sent Events (SSE)** to handle real-time updates and live data streaming
 - 💰 **Stripe** for secure online payment processing
 
 ---
