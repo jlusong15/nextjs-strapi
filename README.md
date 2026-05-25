@@ -8,6 +8,7 @@ A modern full-stack setup using:
 - ⚛️ **Server-side rendering (SSR)** for better SEO and performance
 - 🎨 **Tailwind CSS** for modern and responsive UI styling
 - 🧠 **TanStack Query** for server state management and API caching
+- 🚀 **TanStack Virtualizer** for efficient rendering of large lists and improved scrolling performance
 - 💰 **Stripe** for secure online payment processing
 
 ---
@@ -39,6 +40,7 @@ my-app/
 - TypeScript
 - TailwindCSS
 - TanStack Query
+- TanStack Virtualizer
 - Shadcn UI
 - Stripe
 
