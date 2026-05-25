@@ -1,18 +1,21 @@
 "use client"
 
+import StarRating from "@/components/shared/Rating"
 import TipTapEditor from "@/components/shared/TipTapEditor/page"
 import { Button } from "@/components/ui/button"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { mapTiptapToBlocks } from "@/lib/editor.util"
 import { postBookReview } from "@/services/book-reviews.service"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
+import { mapBookReviewToFormData } from "./mapper"
 import { BookFormValues, bookSchema } from "./schema"
-import StarRating from "@/components/shared/Rating"
+import { toast } from "sonner"
 
 export default function BookSubmitForm() {
+	const router = useRouter()
 	const methods = useForm({
 		mode: "onChange",
 		resolver: zodResolver(bookSchema),
@@ -25,28 +28,25 @@ export default function BookSubmitForm() {
 		},
 	})
 	const { control, handleSubmit, reset } = methods
-
+	const handleRedirect = () => {
+		router.push("/book-reviews")
+	}
 	const formDataPostBookReview = (data: BookFormValues) => {
-		const formData = new FormData()
-		const contentBlocks = data.content ? mapTiptapToBlocks(data.content) : null
-		formData.append("title", String(data?.title?.trim() || ""))
-		formData.append("author", String(data?.author?.trim() || ""))
-		formData.append("rating", data?.rating ? String(data.rating) : "0")
-		formData.append("price", data?.price ? String(data.price) : "")
-		formData.append("content", contentBlocks?.length ? JSON.stringify(contentBlocks) : "")
+		const formData = mapBookReviewToFormData(data)
 		return postBookReview(formData)
 	}
-
 	const { isPending, error, mutate } = useMutation({
 		mutationFn: formDataPostBookReview,
 		onSuccess: () => {
 			reset()
+			toast.success("Review submitted successfully!")
+			handleRedirect()
 		},
 		onError: (err) => {
 			console.error("Submit error:", err)
+			toast.error("An error occurred while submitting the review. Please try again.")
 		},
 	})
-
 	const onSubmit = (data: BookFormValues) => {
 		mutate(data as BookFormValues)
 	}
@@ -61,7 +61,7 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Title</FormLabel>
 							<FormControl>
-								<Input {...field} type="text" />
+								<Input {...field} type="text" disabled={isPending} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -75,7 +75,7 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Author</FormLabel>
 							<FormControl>
-								<Input {...field} type="text" />
+								<Input {...field} type="text" disabled={isPending} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -89,7 +89,11 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Rating</FormLabel>
 							<FormControl>
-								<StarRating value={field?.value || 0} onChange={(value) => field.onChange(value)} />
+								<StarRating
+									value={field?.value || 0}
+									onChange={(value) => field.onChange(value)}
+									readonly={isPending}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -103,7 +107,7 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Content</FormLabel>
 							<FormControl>
-								<TipTapEditor {...field} hasError={!!fieldState.error} />
+								<TipTapEditor {...field} hasError={!!fieldState.error} disabled={isPending} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -117,7 +121,7 @@ export default function BookSubmitForm() {
 						<FormItem>
 							<FormLabel>Price (optional)</FormLabel>
 							<FormControl>
-								<Input {...field} type="number" />
+								<Input {...field} type="number" disabled={isPending} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

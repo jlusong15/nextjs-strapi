@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Placeholder from "@tiptap/extension-placeholder"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
@@ -9,9 +10,10 @@ type TipTapEditorProps = {
 	value?: any
 	onChange: (value: any) => void
 	hasError?: boolean
+	disabled?: boolean
 }
 
-export default function TipTapEditor({ value, onChange, hasError, ...props }: TipTapEditorProps) {
+export default function TipTapEditor({ value, onChange, hasError, disabled = false, ...props }: TipTapEditorProps) {
   const error = hasError
 	const editor = useEditor({
 		extensions: [
@@ -20,6 +22,7 @@ export default function TipTapEditor({ value, onChange, hasError, ...props }: Ti
 				placeholder: "Write something...",
 			}),
 		],
+		editable: !disabled,
 		editorProps: {
 			attributes: {
 				class: "tiptap min-h-[200px] p-3 outline-none focus:outline-none",
@@ -34,13 +37,16 @@ export default function TipTapEditor({ value, onChange, hasError, ...props }: Ti
 
 	// useEffect(() => {
 	// 	if (editor) {
-	// 		onChange(editor.getJSON())
+	// 		editor.setEditable(!disabled)
 	// 	}
-	// }, [editor])
+	// }, [editor, disabled])
 
 	return (
-		<div className={`border rounded-lg overflow-hidden ${error ? "border-red-600" : "border-gray-200"}`}>
-			<TipTapToolbar editor={editor} /> <EditorContent editor={editor} {...props} />
+		<div className={`border rounded-lg overflow-hidden ${error ? "border-red-600" : "border-gray-200"} ${disabled ? "opacity-80" : ""}`}>
+			<TipTapToolbar editor={editor} disabled={disabled} />
+			<div className={disabled ? "pointer-events-none" : ""}>
+				<EditorContent editor={editor} {...props} />
+			</div>
 		</div>
 	)
 }

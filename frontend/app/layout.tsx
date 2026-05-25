@@ -4,8 +4,9 @@ import "./globals.css"
 import Providers from "./providers"
 import { cn } from "@/lib/utils"
 import MenuNav from "@/components/layout/MenuNav"
+import { Toaster } from "@/components/ui/sonner"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
 const dmSans = DM_Sans({
 	subsets: ["latin"],
@@ -32,7 +33,10 @@ export default function RootLayout({
 					<main className="flex-1 transition-all duration-300">
 						<div className="min-h-[calc(100svh-15px)]">
 							{" "}
-							<Providers>{children}</Providers>
+							<Providers>
+								{children}
+								<Toaster />
+							</Providers>
 						</div>
 					</main>
 				</div>
