@@ -10,6 +10,7 @@ A modern full-stack setup using:
 - 🧠 **TanStack Query** for server state management and API caching
 - 🚀 **TanStack Virtualizer** for efficient rendering of large lists and improved scrolling performance
 - 🔄 **Server-Sent Events (SSE)** to handle real-time updates and live data streaming
+- ✍️ **Tiptap** for customizable rich text editing and content creation
 - 💰 **Stripe** for secure online payment processing
 
 ---
@@ -43,6 +44,7 @@ my-app/
 - TanStack Query
 - TanStack Virtualizer
 - Shadcn UI
+- TipTap
 - Stripe
 
 ### Run React Project
