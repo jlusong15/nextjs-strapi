@@ -45,6 +45,8 @@ my-app/
 - TanStack Virtualizer
 - Shadcn UI
 - TipTap
+- React Hook Form
+- Zod
 - Stripe
 
 ### Run React Project
