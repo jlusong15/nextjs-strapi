@@ -1,8 +1,9 @@
-Link to live demo: https://nextjs-strapi-sepia.vercel.app/
-
 # 🚀 Next.js + Strapi (SSR Hydration Setup)
+A simple React application demonstrating the usage of the technologies listed below.
 
-A modern full-stack setup using:
+Live demo on https://nextjs-strapi-sepia.vercel.app/
+
+# 🚀 Tech Stack
 - ⚡ **Next.js** for full-stack React development
 - 🔥 **Strapi** for content and API management
 - ⚛️ **Server-side rendering (SSR)** for better SEO and performance
@@ -12,6 +13,8 @@ A modern full-stack setup using:
 - 🔄 **Server-Sent Events (SSE)** to handle real-time updates and live data streaming
 - ✍️ **Tiptap** for customizable rich text editing and content creation
 - 💰 **Stripe** for secure online payment processing
+- ✅ **Zod** for schema validation and type-safe data handling
+- 🧾 **React Hook Form** for efficient and scalable form management
 
 ---
 
