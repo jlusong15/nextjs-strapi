@@ -58,10 +58,10 @@ export async function strapiUpload(file: File) {
 	const formData = new FormData()
 	formData.append("files", file)
 
-	const res = await fetch(`${STRAPI_URL}/api/upload`, {
+	const res = await fetch(`${STRAPI_URL}/upload`, {
 		method: "POST",
 		headers: {
-			// Authorization: `Bearer ${STRAPI_TOKEN}`,
+			Authorization: `Bearer ${STRAPI_TOKEN}`,
 		},
 		body: formData,
 	})

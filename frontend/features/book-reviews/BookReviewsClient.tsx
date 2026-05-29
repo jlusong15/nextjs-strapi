@@ -13,7 +13,6 @@ import Link from "next/link"
 export default function BookReviewsClient() {
 	const { data: bookReviews, isLoading, error, refetch, isRefetching } = useBookReviews()
 	const isFetchingData = isLoading || isRefetching
-	const isDev = process.env.NODE_ENV === "development"
 
 	return (
 		<>
@@ -21,12 +20,7 @@ export default function BookReviewsClient() {
 				<Button variant="outline" onClick={() => refetch()} disabled={isFetchingData}>
 					Refetch
 				</Button>
-
-				{isDev && (
-					<div>
-						<LinkButton href="/book-reviews/submit-review">Submit a book review</LinkButton>
-					</div>
-				)}
+				<LinkButton href="/book-reviews/submit-review">Submit a book review</LinkButton>
 			</div>
 			<div className="w-full">
 				{isFetchingData && <Loading text="Fetching books..." />}

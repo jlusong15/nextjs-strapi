@@ -10,9 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { mapBookReviewToFormData } from "./mapper"
 import { BookFormValues, bookSchema } from "./schema"
-import { toast } from "sonner"
+import { FileInput } from "@/components/shared/FileInput"
 
 export default function BookSubmitForm() {
 	const router = useRouter()
@@ -22,6 +23,7 @@ export default function BookSubmitForm() {
 		defaultValues: {
 			title: "",
 			author: "",
+			image: undefined,
 			content: "",
 			rating: 0,
 			price: "",
@@ -54,6 +56,12 @@ export default function BookSubmitForm() {
 	return (
 		<FormProvider {...methods}>
 			<div className="flex flex-col gap-4">
+				{error && (
+					<div className="text-red-600 text-sm mt-2">
+						Error: {error instanceof Error ? error.message : "An error occurred"}
+					</div>
+				)}
+
 				<FormField
 					control={control}
 					name="title"
@@ -84,8 +92,26 @@ export default function BookSubmitForm() {
 
 				<FormField
 					control={control}
+					name="image"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Cover Image (optional)</FormLabel>
+							<FormControl>
+								<FileInput
+									accept="image/*"
+									disabled={isPending}
+									onChange={(e) => field.onChange(e.target.files?.[0])}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+
+				<FormField
+					control={control}
 					name="rating"
-					render={({ field, fieldState }) => (
+					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Rating</FormLabel>
 							<FormControl>
@@ -133,11 +159,6 @@ export default function BookSubmitForm() {
 						{isPending ? "Submitting..." : "Submit Review"}
 					</Button>
 				</div>
-				{error && (
-					<div className="text-red-600 text-sm mt-2">
-						Error: {error instanceof Error ? error.message : "An error occurred"}
-					</div>
-				)}
 			</div>
 		</FormProvider>
 	)

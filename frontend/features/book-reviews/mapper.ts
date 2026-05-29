@@ -25,5 +25,9 @@ export const mapBookReviewToFormData = (
 		formData.append(key, value)
 	})
 
+	if (data.image) {
+		formData.append('image', data.image as File)
+	}
+
 	return formData
 }

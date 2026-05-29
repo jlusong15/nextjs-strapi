@@ -4,6 +4,7 @@ import { mapTiptapToBlocks } from "@/lib/editor.util"
 export const bookSchema = z.object({
 	title: z.string().min(1, { message: "Book Title is required" }),
 	author: z.string().min(1, { message: "Book Author is required" }),
+	image: z.any().optional(),
 	rating: z
 		.number()
 		.min(1, { message: "Rating must be at least 1 star" })
