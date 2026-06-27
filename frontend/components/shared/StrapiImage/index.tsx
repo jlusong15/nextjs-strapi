@@ -9,7 +9,7 @@ type Props = {
 	fallback?: string
 } & Omit<ImageProps, "src" | "alt">
 
-const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL?.replace("/api", "") || ""
+const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL?.replace("/api", "")!
 
 function getImage(image?: StrapiImageData | null, size: Size = "original") {
 	if (!image) return null

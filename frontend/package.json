@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@refinedev/core": "^5.0.12",
+    "@refinedev/nextjs-router": "^7.0.5",
+    "@refinedev/react-hook-form": "^5.0.4",
+    "@refinedev/strapi-v4": "^7.0.1",
     "@tailwindcss/cli": "^4.2.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tanstack/react-query": "^5.100.10",
