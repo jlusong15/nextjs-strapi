@@ -467,6 +467,95 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAccessControlAccessControl
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'access_controls';
+  info: {
+    displayName: 'AccessControl';
+    pluralName: 'access-controls';
+    singularName: 'access-control';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::access-control.access-control'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    roleAccess: Schema.Attribute.JSON & Schema.Attribute.Required;
+    roleCode: Schema.Attribute.Enumeration<
+      ['ADMIN', 'RECRUITER', 'INTERVIEWER']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'INTERVIEWER'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiApplicantApplicant extends Struct.CollectionTypeSchema {
+  collectionName: 'applicants';
+  info: {
+    displayName: 'Applicants';
+    pluralName: 'applicants';
+    singularName: 'applicant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    applicationStatus: Schema.Attribute.Enumeration<
+      [
+        'New',
+        'Screening',
+        'Interview Scheduled',
+        'Interviewed',
+        'Technical Exam',
+        'Offer Sent',
+        'Hired',
+        'Rejected',
+        'Withdrawn',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'New'>;
+    appliedRole: Schema.Attribute.String & Schema.Attribute.Required;
+    availableStartDate: Schema.Attribute.Date;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    expectedSalary: Schema.Attribute.Decimal;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    interviews: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::interview.interview'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::applicant.applicant'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    skills: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    yearsOfExperience: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -579,6 +668,41 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     posts: Schema.Attribute.Relation<'manyToMany', 'api::post.post'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiInterviewInterview extends Struct.CollectionTypeSchema {
+  collectionName: 'interviews';
+  info: {
+    displayName: 'Interviews';
+    pluralName: 'interviews';
+    singularName: 'interview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    applicant: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    interviewDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    interviewerName: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::interview.interview'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1198,9 +1322,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::access-control.access-control': ApiAccessControlAccessControl;
+      'api::applicant.applicant': ApiApplicantApplicant;
       'api::author.author': ApiAuthorAuthor;
       'api::book-review.book-review': ApiBookReviewBookReview;
       'api::category.category': ApiCategoryCategory;
+      'api::interview.interview': ApiInterviewInterview;
       'api::order.order': ApiOrderOrder;
       'api::post.post': ApiPostPost;
       'api::task.task': ApiTaskTask;

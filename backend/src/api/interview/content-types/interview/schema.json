@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interviews",
+  "info": {
+    "singularName": "interview",
+    "pluralName": "interviews",
+    "displayName": "Interviews"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "interviewDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "interviewerName": {
+      "type": "string",
+      "required": true
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "interviews"
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

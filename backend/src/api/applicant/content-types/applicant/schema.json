@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applicants",
+  "info": {
+    "singularName": "applicant",
+    "pluralName": "applicants",
+    "displayName": "Applicants"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "appliedRole": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "yearsOfExperience": {
+      "type": "integer",
+      "required": true
+    },
+    "applicationStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "New",
+      "enum": [
+        "New",
+        "Screening",
+        "Interview Scheduled",
+        "Interviewed",
+        "Technical Exam",
+        "Offer Sent",
+        "Hired",
+        "Rejected",
+        "Withdrawn"
+      ]
+    },
+    "expectedSalary": {
+      "type": "decimal"
+    },
+    "availableStartDate": {
+      "type": "date"
+    },
+    "skills": {
+      "type": "json"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "interviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::interview.interview",
+      "mappedBy": "applicant"
+    }
+  }
+}

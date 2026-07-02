@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "access_controls",
+  "info": {
+    "singularName": "access-control",
+    "pluralName": "access-controls",
+    "displayName": "AccessControl"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "roleCode": {
+      "type": "enumeration",
+      "required": true,
+      "default": "INTERVIEWER",
+      "enum": [
+        "ADMIN",
+        "RECRUITER",
+        "INTERVIEWER"
+      ]
+    },
+    "roleAccess": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
